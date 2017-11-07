@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/backgroundColor"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="MON, 8:00-9:00 am"
+        android:textSize="18sp"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/backgroundColor"
+        android:layout_marginBottom="8dp"
+        android:id="@+id/course_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="6dp"
+        android:inputType="textPersonName"
+        android:id="@+id/et_course_name"
+        android:background= "@drawable/edit_text_state_list"
+        android:hint="course code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:padding="6dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background= "@drawable/edit_text_state_list"
+        android:id="@+id/et_course_venue"
+        android:hint="venue"
+        android:inputType="textPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:padding="6dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+
+        android:background= "@drawable/edit_text_state_list"
+        android:id="@+id/et_course_lecturer"
+        android:hint="lecturer"
+        android:imeOptions="actionDone"
+        android:inputType="textPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Spinner
+       android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/color_picker"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="CANCEL"
+            android:padding="16dp"
+            android:clickable="true"
+            android:id="@+id/time_class_cancel"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorPrimary" />
+        <TextView
+            android:text="ADD"
+            android:id="@+id/time_class_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:clickable="true"
+            android:paddingTop="16dp"
+            android:paddingRight="32dp"
+            android:paddingBottom="16dp"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+</LinearLayout>

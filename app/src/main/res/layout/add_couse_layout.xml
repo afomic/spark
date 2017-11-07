@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/backgroundColor"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_toolbar"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:theme="@style/AppTheme.AppBarOverlay"/>
+    <EditText
+        android:background= "@drawable/edit_text_state_list"
+        android:hint="Course Code"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:inputType="textPersonName"
+        android:id="@+id/edt_course_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:background= "@drawable/edit_text_state_list"
+        android:hint="Course Title"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:inputType="textPersonName"
+        android:id="@+id/edt_course_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:background= "@drawable/edit_text_state_list"
+        android:hint="Course Unit"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:inputType="numberDecimal"
+        android:id="@+id/edt_course_unit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:padding="@dimen/surface_margin"
+        android:layout_margin="@dimen/surface_margin"
+        android:orientation="vertical"
+        android:background="@color/backgroundColor"
+        android:elevation="@dimen/elevation_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Please select the level "
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/textColor"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:text="100"
+                android:id="@+id/rb_level_hundred"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="200"
+                android:id="@+id/rb_level_two_hundred"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="300"
+                android:id="@+id/rb_level_three_hundred"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="400"
+                android:id="@+id/rb_level_four_hundred"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="500"
+                android:id="@+id/rb_level_five_hundred"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+    </LinearLayout>
+    <LinearLayout
+        android:padding="@dimen/surface_margin"
+        android:background="@color/backgroundColor"
+        android:elevation="@dimen/elevation_size"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/surface_margin"
+        android:layout_marginRight="@dimen/surface_margin"
+        android:layout_marginBottom="@dimen/surface_margin">
+        <TextView
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/textColor"
+            android:layout_marginBottom="10dp"
+            android:text="Semester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:text="First"
+                android:id="@+id/rb_semester_first"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            S<RadioButton
+            android:text="Second"
+            android:id="@+id/rb_semester_second"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="ADD"
+            android:id="@+id/btn_add"
+            android:background="@drawable/box_blue"
+            android:padding="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="DONE"
+            android:id="@+id/btn_done"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/backgroundColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

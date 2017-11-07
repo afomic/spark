@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:gravity="center"
+        android:text="CHM1 102"
+        android:textSize="24sp"
+        android:textAllCaps="true"
+        android:padding="12dp"
+        android:textStyle="bold"
+        android:textColor="@color/backgroundColor"
+        android:background="@color/colorAccent"
+        android:id="@+id/tv_detail_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@color/backgroundColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:paddingRight="16dp"
+            android:src="@drawable/ic_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+        <TextView
+            android:text="8-9am"
+            android:id="@+id/tv_detail_time"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:background="@color/backgroundColor"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_venue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp" />
+        <TextView
+            android:text="Ajose"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:id="@+id/tv_detail_venue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@color/backgroundColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp" />
+        <TextView
+            android:text="Dr Ajayi"
+            android:textSize="16sp"
+            android:id="@+id/tv_detail_lecturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+       android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@color/backgroundColor"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="DELETE"
+            android:textSize="14sp"
+            android:layout_width="0dp"
+            android:id="@+id/action_delete"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:background="?attr/selectableItemBackground"
+            android:textColor="@color/colorAccent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp" />
+
+       <LinearLayout
+           android:gravity="right"
+           android:layout_weight="2"
+           android:orientation="horizontal"
+           android:layout_width="0dp"
+           android:layout_height="match_parent">
+           <TextView
+               android:text="MODIFY"
+               android:padding="16dp"
+               android:textAppearance="@style/TextAppearance.AppCompat"
+               android:clickable="true"
+               android:textSize="14sp"
+               android:background="?attr/selectableItemBackground"
+               android:id="@+id/action_modify"
+               android:textColor="@color/colorAccent"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content" />
+           <TextView
+               android:text="OK"
+               android:textSize="14sp"
+               android:textAppearance="@style/TextAppearance.AppCompat"
+               android:id="@+id/action_ok"
+               android:textColor="@color/colorAccent"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingLeft="16dp"
+               android:clickable="true"
+               android:background="?attr/selectableItemBackground"
+               android:paddingTop="16dp"
+               android:paddingRight="32dp"
+               android:paddingBottom="16dp" />
+
+       </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

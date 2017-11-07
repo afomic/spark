@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Spark</string>
+    <string name="special">In order to be eligible for B.Sc. (Hons), a candidate must
+        satisfactorily complete a minimum total of 12 units of Special Electives as prescribed by
+        Senate regulations,including SEO 003, SEO 004, SER 001 and SER 002</string>
+    <string name="econs_rest">You are to do 2 unit of Restricted Electives in first Semester of part 5.\n
+    You are to do 4 Unit of Restricted Electives in second Semester of part 5</string>
+    <string name="math_rest">You are to do 4 unit of Restricted Electives in first Semester of Part 5, 2 unit from computer science course and 2unit
+        from Maths course.\n
+    You are to do 4 Unit of Restricted Electives in second Semester of part 5</string>
+    <string name="eng_rest">You are to do 3 unit of Restricted Electives in first Semester of part 5.\n
+    You are to do 4 Unit of Restricted Electives in second Semester of part 5</string>
+
+    <string name="constitution"> Constitution</string>
+    <string name="transition_name">image</string>
+    <array name="option">
+        <item>Please Select Your Option</item>
+        <item>Economics</item>
+        <item>Engineering</item>
+        <item>Mathematics</item>
+    </array>
+
+    <string name="focus">Through consistent and professional exposure, NACOSS provides an excellent foundation for Computer Scientists,
+        Engineers and any IT related disciplines in Nigeria. Over the years, NACOSS has given to the economy and society the finest
+        professionals in Information and Communications Technology ICT and is dedicated to doing even more in future.
+        A study of NACOSS activities indicates that it reveals IT career and entrepreneurship opportunities to the youth of Nigeria.
+        It provides opportunities for them to explore and fulfill their potentials and become more competitive in the IT environment locally and globally.
+        It is about equipping young people to become contributors and change agents in Nigeria through IT.
+        When Nigeria youths are empowered and driven in the field of Computing and related areas, they drive change in Nigeria and Africa, and they change the face of IT.</string>
+    <string name="capacity">NACOSS aims to re – orient the Nigerian youth and project the IT profession through Seminars,
+        Lectures, Symposia, Workshops and other related activities. The intention appears to be the active and purposeful
+        promotion of the study of IT and other positive forms of IT knowledge acquisition. NACOSS organizes capacity building
+        exercises to enlighten the youths, the young people of Nigeria on how to become entrepreneurs using acquired IT skills and
+        also to create platforms for neophytes, and gurus associated with the intriguing world of Information Technology to exhibit
+        their products, services and software to businesses, industry and the public. These forums are also directed towards encouraging
+        the patronage of made-in Nigeria technology, software and services while also engaging participants and exhibitors positively.
+        NACOSS events include intensive enlightenment of students by IT Industry players to create awareness and expose NACOSSITES to the reality of IT industry,
+        the business environment and career growth requirements. Thorough discussion and interaction between students and experienced professionals,
+        managers and policy makers lead to career guidance and mentorship for professional growth and successful entrepreneurship. Such events usually include
+        consultation and deliberations on new and emerging world technologies and the need for local content development and addressing issues relating to the
+        digital divide. Software exhibitions are a feature of the events to encourage and reward NACOSSITES involved in software development. NACOSS aims to
+        foster the growth of the IT profession and promotes the interests of the profession through its engagement with the youth.
+        It does not engage in sex discrimination, and does not promote ethnicity, religion and other forms of nepotism or discrimination.
+        NACOSS is committed to professionalism and youth empowerment through IT. It aims to connect
+        members with the reality of industry and society in ways that will empower them and enable them to make significant impact in their communities, locally and globally.</string>
+    <string name="history">The Nigerian Association of Computer Science Students (NACOSS) is a student professional
+        body with presence in almost all tertiary institutions in Nigeria (both private and government owned).
+        NACOSS was founded by groups of students in July 1993 with the backing of Nigerian Computer Society (NCS)
+        as its parent body. It provides avenues for students (in any IT related field) to highlight and champion
+        issues of interest in a coordinated and organized manner. NACOSS members (NACOSSites) are students studying
+        in tertiary institutions in computer related disciplines including: Computer Science, Computer Engineering,
+        Information Technology, etc. Each member is essentially a member of the Association’s local chapter in his or her institution.
+        As of April 2012, NACOSS states that it is the largest and most organized student body in West Africa, with registered members of about Two
+        Hundred and Fifty thousand (250 000) in well over One Hundred and fifty local chapters (and more unregistered)
+        in different Institutions (Universities, Polytechnics and Colleges of Education) across the six (6) Geo-political zones of Nigeria.</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Welcome!</string>
+    <string name="slide_1_desc">The best way to manage all your activity!</string>
+
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+
+    <string name="slide_3_title">Time Table</string>
+    <string name="slide_3_desc">Get Notified for each class ten minute before the class!</string>
+
+    <string name="slide_4_title">World Travel</string>
+    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+</resources>

@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+    <TextView
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:text="@string/eng_rest"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:text="Course Code"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom= "1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Course Tile"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:textSize="12sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Sem"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Part"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:text="Unit"
+            android:padding="2dp"
+            android:background="@color/backgroundColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <View
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cae1dfdf" />
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:text="EEE 409"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom= "1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Servomechanism and Control"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:textSize="12sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="1st"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Part 5"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:text="3"
+            android:padding="2dp"
+            android:background="@color/backgroundColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:text="EEE 411"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom= "1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Communications Principles"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:textSize="12sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="1st"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Part 5"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:text="3"
+            android:padding="2dp"
+            android:background="@color/backgroundColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+
+    <View
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#cae1dfdf" />
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:text="CSC 514"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom= "1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Computer Graphics"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:textSize="12sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="2nd"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Part 5"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:text="2"
+            android:padding="2dp"
+            android:background="@color/backgroundColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:text="CSC 522"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom= "1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Information Storage &amp; Retrieval"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:textSize="12sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="2nd"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Part 5"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:text="2"
+            android:padding="2dp"
+            android:background="@color/backgroundColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:text="CSC 520"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom= "1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Expert System"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:textSize="12sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="2nd"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Part 5"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:text="2"
+            android:padding="2dp"
+            android:background="@color/backgroundColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:text="CSC 524"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom= "1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Techniques in Data Analysis"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:textSize="12sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="2nd"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:padding="2dp"
+            android:text="Part 5"
+            android:gravity="center"
+            android:background="@color/backgroundColor"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            android:text="2"
+            android:padding="2dp"
+            android:background="@color/backgroundColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="12sp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

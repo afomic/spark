@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        android:paddingTop="8dp"
+        android:paddingLeft="32dp"
+        android:paddingBottom="8dp">
+        <TextView
+            android:text="1"
+            android:gravity="center"
+
+            android:id="@+id/section_number"
+            android:textColor="@color/backgroundColor"
+            android:background="@drawable/circle"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+        <TextView
+            android:id="@+id/section_title"
+            android:text="this is why i eat"
+            android:paddingLeft="16dp"
+            android:textSize="12sp"
+            android:textAllCaps="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:visibility="gone"
+        android:id="@+id/black_background"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cae1dfdf" />
+
+
+</LinearLayout>

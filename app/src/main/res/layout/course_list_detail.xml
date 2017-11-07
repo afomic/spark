@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ExpandableListView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/course_list"
+    android:childDivider="@color/backgroundColor"
+    android:groupIndicator="@color/backgroundColor"
+    android:headerDividersEnabled="true"
+    android:footerDividersEnabled="true"
+    android:dividerHeight="1dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="70dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        android:background="@color/backgroundColor">
+        <TextView
+            android:id="@+id/tv_time"
+            android:textSize="@dimen/time_table_text_size"
+            android:gravity="center"
+            android:text="17"
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:clickable="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="1dp"
+        android:id="@+id/ll_monday_class"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical"
+        android:padding="2dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+        <TextView
+            android:textColor="@color/backgroundColor"
+            android:textSize="12sp"
+            android:padding="2dp"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+        <TextView
+            android:textColor="@color/backgroundColor"
+            android:textSize="@dimen/time_table_text_size"
+            android:padding="2dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_tuesday_class"
+        android:clickable="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:padding="2dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/backgroundColor"
+            android:padding="2dp"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+        <TextView
+            android:textSize="@dimen/time_table_text_size"
+            android:textColor="@color/backgroundColor"
+            android:padding="2dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:clickable="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="1dp"
+        android:id="@+id/ll_wednesday_class"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:padding="2dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/backgroundColor"
+            android:padding="2dp"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+        <TextView
+            android:textSize="@dimen/time_table_text_size"
+            android:textColor="@color/backgroundColor"
+            android:padding="2dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_thursday_class"
+        android:clickable="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:padding="2dp"
+        android:layout_height="match_parent">
+        <TextView
+            android:textColor="@color/backgroundColor"
+            android:textSize="12sp"
+            android:padding="2dp"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"/>
+        <TextView
+            android:textColor="@color/backgroundColor"
+            android:textSize="@dimen/time_table_text_size"
+            android:padding="2dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_friday_class"
+        android:clickable="true"
+        android:padding="2dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/backgroundColor"
+            android:padding="2dp"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+        <TextView
+            android:textColor="@color/backgroundColor"
+            android:textSize="@dimen/time_table_text_size"
+            android:padding="2dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+</LinearLayout>

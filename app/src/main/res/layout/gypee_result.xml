@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:background="@color/backgroundColor"
+        android:layout_margin="@dimen/surface_margin"
+        android:elevation="1dp"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/textColor"
+            android:textSize="25sp"
+            android:text="LEVEL:"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/result_level"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:background="@color/backgroundColor"
+        android:elevation="1dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/surface_margin"
+        android:layout_marginRight="@dimen/surface_margin"
+        android:layout_marginBottom="@dimen/surface_margin">
+        <TextView
+            android:textColor="@color/textColor"
+            android:textSize="25sp"
+            android:text="SEMESTER:"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/result_semester"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:background="@color/backgroundColor"
+        android:elevation="1dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/surface_margin"
+        android:layout_marginRight="@dimen/surface_margin"
+        android:layout_marginBottom="@dimen/surface_margin">
+        <TextView
+            android:textColor="@color/textColor"
+            android:textSize="25sp"
+            android:text="GPA:"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/result_gpa"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:background="@color/backgroundColor"
+        android:elevation="1dp"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/surface_margin"
+        android:layout_marginRight="@dimen/surface_margin"
+        android:layout_marginLeft="@dimen/surface_margin">
+        <TextView
+            android:textColor="@color/textColor"
+            android:textSize="25sp"
+            android:text="CGPA:"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/result_cgpa"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <ImageView
+           android:layout_alignParentBottom="true"
+           android:layout_margin="16dp"
+           android:src="@drawable/test2"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+   </RelativeLayout>
+
+
+
+</LinearLayout>
