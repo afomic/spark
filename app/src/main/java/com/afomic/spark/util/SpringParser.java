@@ -21,14 +21,13 @@ public class SpringParser {
     private static final char UNDERLINE_SPAN='$';
     private static final char HEADING_ONE_SPAN='#';
 
-    private String mText;
 
-    public SpringParser(String text){
-        mText=text;
+    public SpringParser(){
+
     }
 
-    public Spannable parseString(){
-        SpannableStringBuilder span=new SpannableStringBuilder(mText);
+    public Spannable parseString(String text){
+        SpannableStringBuilder span=new SpannableStringBuilder(text);
         setSpan(BOLD_SPAN,span);
         setSpan(ITTALIC_SPAN,span);
         setSpan(STRIKE_THROUGH_SPAN,span);
@@ -91,5 +90,9 @@ public class SpringParser {
         }
         return -1;
     }
+    public void removeChar(int position,SpannableStringBuilder span){
+        span.insert(position,"");
+    }
+
 
 }

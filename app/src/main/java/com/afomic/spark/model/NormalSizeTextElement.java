@@ -1,5 +1,7 @@
 package com.afomic.spark.model;
 
+import android.os.Parcel;
+
 /**
  * Created by afomic on 11/4/17.
  */
@@ -7,12 +9,38 @@ package com.afomic.spark.model;
 public class NormalSizeTextElement implements BlogElement{
     private String body;
 
-    public NormalSizeTextElement(String body){
-        this.body=body;
+    public NormalSizeTextElement(){
+        this.body="";
     }
+
+    protected NormalSizeTextElement(Parcel in) {
+        body = in.readString();
+    }
+
+    public static final Creator<NormalSizeTextElement> CREATOR = new Creator<NormalSizeTextElement>() {
+        @Override
+        public NormalSizeTextElement createFromParcel(Parcel in) {
+            return new NormalSizeTextElement(in);
+        }
+
+        @Override
+        public NormalSizeTextElement[] newArray(int size) {
+            return new NormalSizeTextElement[size];
+        }
+    };
 
     public String getBody() {
         return body;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(body);
     }
 
     public void setBody(String body) {
@@ -26,6 +54,6 @@ public class NormalSizeTextElement implements BlogElement{
 
     @Override
     public String toHtml() {
-        return null;
+        return "<nt>"+body+"</nt>";
     }
 }

@@ -17,6 +17,8 @@ public class BlogPost implements Parcelable {
     private long mTimeStamp;
     private String mPosterName;
     private String mPosterIconUrl;
+    private int  fileType;
+    private int status;
 
     public BlogPost(){
         mTimeStamp=System.currentTimeMillis();
@@ -32,6 +34,7 @@ public class BlogPost implements Parcelable {
         mTimeStamp = in.readLong();
         mPosterName = in.readString();
         mPosterIconUrl = in.readString();
+        fileType = in.readInt();
     }
 
     public static final Creator<BlogPost> CREATOR = new Creator<BlogPost>() {
@@ -45,24 +48,6 @@ public class BlogPost implements Parcelable {
             return new BlogPost[size];
         }
     };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mId);
-        dest.writeInt(mType);
-        dest.writeString(mBody);
-        dest.writeString(mTitle);
-        dest.writeString(mPictureUrl);
-        dest.writeString(mFileUrl);
-        dest.writeLong(mTimeStamp);
-        dest.writeString(mPosterName);
-        dest.writeString(mPosterIconUrl);
-    }
 
     public int getType() {
         return mType;
@@ -136,10 +121,44 @@ public class BlogPost implements Parcelable {
         mPosterIconUrl = posterIconUrl;
     }
 
+    public int getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(int fileType) {
+        this.fileType = fileType;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public class Type{
         public static final int FILE=0;
         public static final int BLOG=1;
 
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mId);
+        dest.writeInt(mType);
+        dest.writeString(mBody);
+        dest.writeString(mTitle);
+        dest.writeString(mPictureUrl);
+        dest.writeString(mFileUrl);
+        dest.writeLong(mTimeStamp);
+        dest.writeString(mPosterName);
+        dest.writeString(mPosterIconUrl);
+        dest.writeInt(fileType);
+    }
 }

@@ -21,12 +21,13 @@ import com.afomic.spark.R;
 import com.afomic.spark.adapter.navAdapter;
 import com.afomic.spark.data.Constants;
 import com.afomic.spark.data.GypeeCourseData;
-import com.afomic.spark.fragment.BlogFragment;
+import com.afomic.spark.data.PreferenceManager;
 import com.afomic.spark.fragment.ConstitutionFragment;
 import com.afomic.spark.fragment.CourseListFragment;
 import com.afomic.spark.fragment.FeedbackFragment;
 import com.afomic.spark.fragment.GypeeFragment;
 import com.afomic.spark.fragment.HelpFragment;
+import com.afomic.spark.fragment.PostFragment;
 import com.afomic.spark.fragment.ProfileFragment;
 import com.afomic.spark.fragment.TimeTableFragment;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     int privPosition;
     navAdapter adapter;
     boolean firstRun=true;
+    private PreferenceManager preferenceManager;
     int pos=0;
     int[] imageId={R.drawable.home, R.drawable.help,R.drawable.feedback,R.drawable.about,
             R.drawable.about,R.drawable.about,R.drawable.about,R.drawable.about,R.drawable.about};
@@ -50,12 +52,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Typeface roboto = Typeface.createFromAsset(getAssets(),"font/Lato-Regular.ttf");
         setContentView(R.layout.activity_main);
+        preferenceManager=new PreferenceManager(MainActivity.this);
+        //TODO remove after test
+        preferenceManager.setDepartmentName("ggg");
+        preferenceManager.setUserId("dhdhdhhdhwiwwiwidncncxncncncn");
         drawerLayout=(DrawerLayout) findViewById(R.id.home);
         GypeeCourseData.addData(this);
         fm=getSupportFragmentManager();
         Fragment fragment=fm.findFragmentById(R.id.main_container);
         if(fragment==null){
-            BlogFragment frag=BlogFragment.newInstance();
+            PostFragment frag=PostFragment.newInstance();
             fm.beginTransaction().add(R.id.main_container,frag).commit();
         }
         if(savedInstanceState!=null){
@@ -101,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 pos=position;
                 switch (position) {
                     case 0:
-                        BlogFragment blogfragment = BlogFragment.newInstance();
-                        displayFragment(blogfragment);
+                        PostFragment frag=PostFragment.newInstance();
+                        displayFragment(frag);
                         break;
                     case 1:
                         TimeTableFragment timeTableFragment=TimeTableFragment.getInstance();

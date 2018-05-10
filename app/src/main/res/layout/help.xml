@@ -18,6 +18,4 @@
         android:groupIndicator="@color/backgroundColor"
         android:background="@color/backgroundColor"
         android:layout_height="match_parent"/>
-
-
 </LinearLayout>

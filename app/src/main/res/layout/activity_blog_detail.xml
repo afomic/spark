@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#fff"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.afomic.spark.BlogDetailActivity">
+    android:layout_height="match_parent">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"/>
     </android.support.design.widget.AppBarLayout>
     <RelativeLayout
@@ -20,13 +20,23 @@
         android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:id="@+id/rv_blog"
+            android:id="@+id/rv_blog_detail"
             android:layout_height="match_parent"/>
         <ProgressBar
             android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:id="@+id/fab_like"
+        android:layout_gravity="bottom|end"
+        android:background="@color/backgroundColor"
+        app:backgroundTint="@color/backgroundColor"
+        android:layout_margin="8dp"
+        app:fabSize="normal"
+        android:src="@drawable/ic_favorite_border"
+        android:layout_height="wrap_content"/>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -10,36 +10,19 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:id="@+id/imv_file_icon"
-            android:background="#7440c4ff"
-            android:padding="40dp"
-            android:src="@drawable/pdf_logo"/>
-        <TextView
-            android:text="Intrroduction to Chemistry.pdf"
-            android:layout_width="match_parent"
-            android:textSize="18sp"
-            android:padding="8dp"
-            android:textStyle="bold"
-            android:id="@+id/tv_file_name"
-            android:layout_height="wrap_content"/>
         <RelativeLayout
             android:padding="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <ImageView
-                android:padding="4dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:paddingTop="4dp"
                 android:id="@+id/imv_post_icon"
                 android:src="@drawable/sample"
                 android:layout_marginRight="8dp"
-                android:layout_width="32dp"
-                android:layout_height="32dp"/>
+                android:layout_width="42dp"
+                android:layout_height="42dp"/>
             <TextView
-                android:textStyle="bold"
+                android:padding="4dp"
                 android:id="@+id/tv_poster_name"
                 android:textSize="16sp"
                 android:layout_toRightOf="@id/imv_post_icon"
@@ -53,16 +36,47 @@
                 android:text="12 hrs ago"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:id="@+id/imv_file_icon"
+            android:background="#7440c4ff"
+            android:padding="40dp"
+            android:src="@drawable/ppt"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Intrroduction to Chemistry.pdf"
+                android:layout_width="0dp"
+                android:textSize="18sp"
+                android:padding="4dp"
+                android:textStyle="bold"
+                android:id="@+id/tv_file_name"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="123"
+                android:id="@+id/tv_download_count"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
             <ImageView
-                android:padding="8dp"
-                android:layout_alignParentRight="true"
+                android:padding="4dp"
+                android:background="?selectableItemBackground"
+                android:id="@+id/imv_download_icon"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_file_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-        </RelativeLayout>
-
+        </LinearLayout>
 
 
     </LinearLayout>

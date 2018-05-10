@@ -1,12 +1,14 @@
 package com.afomic.spark.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.afomic.spark.R;
 import com.afomic.spark.model.ActionListener;
@@ -16,20 +18,31 @@ import com.afomic.spark.model.BulletListTextElement;
 import com.afomic.spark.model.GenericViewHolder;
 import com.afomic.spark.model.ImageElement;
 import com.afomic.spark.model.NormalSizeTextElement;
+import com.afomic.spark.model.NumberListElement;
+import com.afomic.spark.util.GlideApp;
+import com.afomic.spark.util.SpringParser;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 /**
- * Created by afomic on 11/4/17.
+ * Created by afolabi michael on 11/4/17.
+ *
  */
 
 public class BlogDisplayAdapter extends RecyclerView.Adapter<GenericViewHolder> {
     private Context mContext;
     private ArrayList<BlogElement> elementList;
+    private SpringParser stringParser;
+    private Typeface mediumFont,largeFont,italics;
     public BlogDisplayAdapter(Context context, ArrayList<BlogElement> elements){
         mContext=context;
         elementList=elements;
+        stringParser=new SpringParser();
+
+        mediumFont=Typeface.createFromAsset(mContext.getAssets(), "font/medium.ttf");
+        largeFont=Typeface.createFromAsset(mContext.getAssets(), "font/large.ttf");
+        italics=Typeface.createFromAsset(mContext.getAssets(), "font/Lato-Italic.ttf");
     }
     @Override
     public GenericViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -48,6 +61,9 @@ public class BlogDisplayAdapter extends RecyclerView.Adapter<GenericViewHolder> 
             case BlogElement.Type.BULLET_LIST_TEXT:
                 View bullet= mInflater.inflate(R.layout.item_bullet_list,parent,false);
                 return new BulletListViewHolder(bullet);
+            case BlogElement.Type.NUMBER_LIST_TEXT:
+                View numberedView= mInflater.inflate(R.layout.item_number_list,parent,false);
+                return new NumberedListViewHolder(numberedView);
 
         }
         return null;
@@ -56,7 +72,7 @@ public class BlogDisplayAdapter extends RecyclerView.Adapter<GenericViewHolder> 
     @Override
     public void onBindViewHolder(GenericViewHolder holder, int position) {
         BlogElement element=elementList.get(position);
-        holder.bindView(null,position);
+        holder.bindView(null);
     }
 
     @Override
@@ -70,7 +86,8 @@ public class BlogDisplayAdapter extends RecyclerView.Adapter<GenericViewHolder> 
         if(elementList==null){
             return 0;
         }
-        return elementList.size();
+        //quick fix for multiple element insertion
+        return elementList.size()-2;
     }
     public class ImageViewHolder extends GenericViewHolder{
         private ImageView mImageView;
@@ -81,11 +98,12 @@ public class BlogDisplayAdapter extends RecyclerView.Adapter<GenericViewHolder> 
             imageDescription=itemView.findViewById(R.id.tv_image_description);
         }
         @Override
-        public void bindView(ActionListener listener, int position) {
-            ImageElement element=(ImageElement) elementList.get(position);
-            Glide.with(mContext)
+        public void bindView(ActionListener listener) {
+            ImageElement element=(ImageElement) elementList.get(getAdapterPosition());
+            GlideApp.with(mContext)
                     .load(element.getImageUrl())
-                    .thumbnail(R.drawable.image_placeholder)
+                    .thumbnail(0.2f)
+                    .placeholder(R.drawable.image_placeholder)
                     .into(mImageView);
             imageDescription.setText(element.getImageDescription());
         }
@@ -95,12 +113,15 @@ public class BlogDisplayAdapter extends RecyclerView.Adapter<GenericViewHolder> 
         public NormalTextHolder(View itemView) {
             super(itemView);
             mNormalTextView= itemView.findViewById(R.id.tv_normal_text);
+            mNormalTextView.setTypeface(mediumFont);
         }
 
         @Override
-        public void bindView(ActionListener listener, int position) {
+        public void bindView(ActionListener listener) {
+            int position=getAdapterPosition();
             NormalSizeTextElement element=(NormalSizeTextElement) elementList.get(position);
-            mNormalTextView.setText(element.getBody());
+            CharSequence body=stringParser.parseString(element.getBody());
+            mNormalTextView.setText(body);
 
         }
     }
@@ -109,10 +130,12 @@ public class BlogDisplayAdapter extends RecyclerView.Adapter<GenericViewHolder> 
         public BigTextViewHolder(View itemView) {
             super(itemView);
             mBigTextView=itemView.findViewById(R.id.tv_big_text);
+            mBigTextView.setTypeface(largeFont);
         }
 
         @Override
-        public void bindView(ActionListener listener, int position) {
+        public void bindView(ActionListener listener) {
+            int position=getAdapterPosition();
             BigSizeTextElement element=(BigSizeTextElement) elementList.get(position);
             mBigTextView.setText(element.getBody());
         }
@@ -122,13 +145,36 @@ public class BlogDisplayAdapter extends RecyclerView.Adapter<GenericViewHolder> 
         public BulletListViewHolder(View itemView) {
             super(itemView);
             mBulletTextView=itemView.findViewById(R.id.tv_bullet);
+            mBulletTextView.setTypeface(italics);
         }
 
         @Override
-        public void bindView(ActionListener listener, int position) {
+        public void bindView(ActionListener listener) {
+            int position=getAdapterPosition();
             BulletListTextElement element=(BulletListTextElement) elementList.get(position);
             mBulletTextView.setText(element.body);
 
         }
     }
+    public class NumberedListViewHolder extends GenericViewHolder {
+        private TextView mNumberedTextView;
+        private TextView mNumberedPositionTextView;
+        public NumberedListViewHolder(View itemView) {
+            super(itemView);
+            mNumberedTextView=itemView.findViewById(R.id.tv_number);
+            mNumberedPositionTextView=itemView.findViewById(R.id.tv_number_position);
+
+            mNumberedTextView.setTypeface(italics);
+        }
+
+        @Override
+        public void bindView(ActionListener listener) {
+            int position=getAdapterPosition();
+            NumberListElement element=(NumberListElement) elementList.get(position);
+            mNumberedTextView.setText(element.getBody());
+            mNumberedPositionTextView.setText(element.getPosition());
+
+        }
+    }
+
 }

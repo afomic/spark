@@ -13,6 +13,8 @@ public class PreferenceManager {
     private static boolean loggedIn=false;
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     private static final String PREF_DEPARTMENT_NAME="department";
+    private static final String PREF_USER_ID="id";
+    private String emptyString="djkljcamcxk";
 
     public PreferenceManager(Context context){
         preferences=context.getSharedPreferences(Constants.PREF_NAME, 0);
@@ -39,6 +41,14 @@ public class PreferenceManager {
         editor.apply();
     }
 
+    public void setUserId(String userId){
+        SharedPreferences.Editor mEditor=preferences.edit();
+        mEditor.putString(PREF_USER_ID,userId);
+        mEditor.apply();
+    }
+    public String getUserId(){
+        return preferences.getString(PREF_USER_ID,emptyString);
+    }
     public int getSemester() {
         return preferences.getInt(Constants.SEMESTER, 1);
     }

@@ -28,7 +28,7 @@ public class TimeTableContract {
     }
 
     public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String dropTable="DROP TABLE"+TABLE_NAME;
+        String dropTable="DROP TABLE "+TABLE_NAME;
         db.execSQL(dropTable);
     }
 }
