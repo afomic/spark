@@ -55,7 +55,6 @@ public class BlogDetailActivity extends AppCompatActivity
 
     private LoaderManager mLoadManager;
     private PreferenceManager mPreferenceManager;
-    private DatabaseReference postRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +70,6 @@ public class BlogDetailActivity extends AppCompatActivity
             actionBar.setTitle(mBlogPost.getTitle());
         }
         mPreferenceManager=new PreferenceManager(this);
-        String postPath="posts/"+mPreferenceManager.getDepartmentName();
-
-        postRef= FirebaseDatabase.getInstance().getReference(postPath)
-                .child(mBlogPost.getId());
-
 
         //parse the html in the background
         mLoadManager = getSupportLoaderManager();
@@ -94,12 +88,18 @@ public class BlogDetailActivity extends AppCompatActivity
             public void onHide() {
                 CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) likeFab.getLayoutParams();
                 int fabBottomMargin = lp.bottomMargin;
-                likeFab.animate().translationY(likeFab.getHeight() + fabBottomMargin).setInterpolator(new AccelerateInterpolator(2)).start();
+                likeFab.animate()
+                        .translationY(likeFab.getHeight() + fabBottomMargin)
+                        .setInterpolator(new AccelerateInterpolator(2))
+                        .start();
             }
 
             @Override
             public void onShow() {
-                likeFab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+                likeFab.animate()
+                        .translationY(0)
+                        .setInterpolator(new DecelerateInterpolator(2))
+                        .start();
 
             }
 
@@ -152,46 +152,13 @@ public class BlogDetailActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-//        if(mPreferenceManager.isAdmin()){
-//            getMenuInflater().inflate(R.menu.post_manager_menu,menu);
-//        }
-        return super.onCreateOptionsMenu(menu);
-    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()){
-//            case android.R.id.home:
-//                finish();
-//                break;
-//            case R.id.menu_approve_post:
-//                postRef.child("status")
-//                        .setValue(Constant.STATUS_APPROVED)
-//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Util.makeToast(BlogDetailActivity.this,"Approved");
-//                            }
-//                        });
-//                break;
-//            case R.id.menu_delete_post:
-//                postRef.removeValue()
-//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Util.makeToast(BlogDetailActivity.this,"Deleted");
-//                                finish();
-//                            }
-//                        });
-//                break;
-//            case R.id.menu_edit_post:
-//                Intent intent=new Intent(this,CreateBlogActivity.class);
-//                intent.putExtra(Constant.EXTRA_BLOG_ELEMENTS,mBlogElements);
-//                startActivity(intent);
-//                break;
-//
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

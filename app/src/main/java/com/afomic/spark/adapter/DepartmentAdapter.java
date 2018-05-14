@@ -1,27 +1,30 @@
 package com.afomic.spark.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
+import com.afomic.spark.R;
 import com.afomic.spark.model.AccessToken;
 
 import java.util.List;
 
 public class DepartmentAdapter extends BaseAdapter {
     private Context mContext;
-    private List<AccessToken> mAccessToken;
+    private List<AccessToken> mAccessTokens;
 
     public DepartmentAdapter(Context context, List<AccessToken> accessTokens) {
         mContext = context;
-        mAccessToken = accessTokens;
+        mAccessTokens = accessTokens;
     }
 
     @Override
     public int getCount() {
-        if (mAccessToken != null) {
-            return mAccessToken.size();
+        if (mAccessTokens != null) {
+            return mAccessTokens.size();
         }
         return 0;
     }
@@ -38,6 +41,21 @@ public class DepartmentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        AccessToken token=mAccessTokens.get(position);
+        DepartmentHolder departmentHolder;
+        if(convertView==null){
+            departmentHolder=new DepartmentHolder();
+            convertView= LayoutInflater.from(mContext).inflate(R.layout.item_department,parent,false);
+            departmentHolder.departmentNameTextView=convertView.findViewById(R.id.tv_department_name);
+            convertView.setTag(departmentHolder);
+        }else {
+            departmentHolder=(DepartmentHolder) convertView.getTag();
+        }
+        departmentHolder.departmentNameTextView.setText(token.getDepartmentName());
+        return convertView;
+    }
+
+    public class DepartmentHolder{
+        TextView departmentNameTextView;
     }
 }
