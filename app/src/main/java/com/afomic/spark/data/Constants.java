@@ -35,15 +35,13 @@ public class Constants {
     public static final String PREQ="prerequisites";
     public static final String UNIT="unit";
     public static final String EXTRA_PROFILE="profile";
-    public static final String EXTRA_BLOG="blog";
     public static final int SAVE_DATA=0;
     public static final int LOAD_DATA=1;
     public static final int UPDATE_DATA=2;
     public static final int STATUS_APPROVED=1;
     public static final int STATUS_UNAPPROVED=0;
     public static final String EXTRA_BLOG_POST="post";
-    public static final String EXTRA_BLOG_ELEMENTS="blog_elements";
-
+    public static final String EXTRA_ACCESS_TOKEN_REF="access";
 
 
 }
