@@ -6,12 +6,13 @@ import android.os.Parcel;
  * Created by afomic on 11/12/17.
  */
 
-public class NumberListElement implements BlogElement{
+public class NumberListElement implements BlogElement {
     private int position;
     private String body;
-    public NumberListElement(int position){
-        this.position=position;
-        this.body="";
+
+    public NumberListElement(int position) {
+        this.position = position;
+        this.body = "";
 
     }
 
@@ -44,7 +45,7 @@ public class NumberListElement implements BlogElement{
     }
 
     public String getPosition() {
-        return position +".";
+        return position + ".";
     }
 
     public void setPosition(int position) {
@@ -66,6 +67,6 @@ public class NumberListElement implements BlogElement{
 
     @Override
     public String toHtml() {
-        return "<nl>"+body+"</nl>";
+        return "<nl>" + body + "</nl>";
     }
 }

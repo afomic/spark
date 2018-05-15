@@ -20,7 +20,7 @@ import com.afomic.spark.R;
  */
 
 public class AboutFragment extends Fragment {
-    public static AboutFragment newInstance(){
+    public static AboutFragment newInstance() {
         return new AboutFragment();
     }
 
@@ -29,13 +29,13 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //inflate the about view
-        View v=inflater.inflate(R.layout.about_page,container,false);
+        View v = inflater.inflate(R.layout.about_page, container, false);
         //setup the toolbar
-        Toolbar toolbar=(Toolbar)v.findViewById(R.id.about_toolbar);
-        CollapsingToolbarLayout collapsingToolbarLayout=(CollapsingToolbarLayout) v.findViewById(R.id.collapsing_toolbar);
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.about_toolbar);
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) v.findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setExpandedTitleGravity(Gravity.BOTTOM);
         collapsingToolbarLayout.setCollapsedTitleGravity(GravityCompat.START);
-        AppCompatActivity act=(AppCompatActivity) getActivity();
+        AppCompatActivity act = (AppCompatActivity) getActivity();
         act.setSupportActionBar(toolbar);
         act.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         act.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_hamburger);

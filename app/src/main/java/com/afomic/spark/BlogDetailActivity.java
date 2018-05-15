@@ -1,6 +1,7 @@
 package com.afomic.spark;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
@@ -8,11 +9,9 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -26,9 +25,6 @@ import com.afomic.spark.model.BlogElement;
 import com.afomic.spark.model.BlogPost;
 import com.afomic.spark.util.ElementParser;
 import com.afomic.spark.util.HidingScrollLinearListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -64,12 +60,12 @@ public class BlogDetailActivity extends AppCompatActivity
 
         mBlogPost = getIntent().getParcelableExtra(Constants.EXTRA_BLOG_POST);
         setSupportActionBar(mToolbar);
-        ActionBar actionBar=getSupportActionBar();
-        if(actionBar!=null){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setTitle(mBlogPost.getTitle());
         }
-        mPreferenceManager=new PreferenceManager(this);
+        mPreferenceManager = new PreferenceManager(this);
 
         //parse the html in the background
         mLoadManager = getSupportLoaderManager();
@@ -82,7 +78,7 @@ public class BlogDetailActivity extends AppCompatActivity
             mLoadManager.restartLoader(BLOG_ELEMENT_LOADER_ID, args, this);
         }
 
-        mLayoutManager=new LinearLayoutManager(this);
+        mLayoutManager = new LinearLayoutManager(this);
         blogView.addOnScrollListener(new HidingScrollLinearListener(mLayoutManager) {
             @Override
             public void onHide() {
@@ -139,7 +135,7 @@ public class BlogDetailActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<ArrayList<BlogElement>> loader, ArrayList<BlogElement> data) {
         mProgressBar.setVisibility(View.GONE);
-        mBlogElements=data;
+        mBlogElements = data;
         BlogDisplayAdapter adapter = new BlogDisplayAdapter(BlogDetailActivity.this, data);
         blogView.setLayoutManager(new LinearLayoutManager(this));
         blogView.setAdapter(adapter);
@@ -153,7 +149,7 @@ public class BlogDetailActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;

@@ -5,35 +5,35 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-
 import com.afomic.spark.model.Course;
 
 import java.util.ArrayList;
 
 /**
- *
  * Created by afomic on 18-Oct-16.
  */
 public class CourseData {
     SQLiteDatabase db;
     DbHelper helper;
-    public CourseData(Context context){
-        helper=new DbHelper(context);
+
+    public CourseData(Context context) {
+        helper = new DbHelper(context);
     }
+
     //insert a course into the database
-    public void addCourse(Course entry, SQLiteDatabase db){
-        db.insert(CourseContract.TABLE_NAME,null,getContentValue(entry));
+    public void addCourse(Course entry, SQLiteDatabase db) {
+        db.insert(CourseContract.TABLE_NAME, null, getContentValue(entry));
     }
 
     //return an array list of courses
-    public ArrayList<Course> getCourse(int level,int semester,int option){
+    public ArrayList<Course> getCourse(int level, int semester, int option) {
         Cursor cu;
         try {
             db = helper.getReadableDatabase();
-            String[] projection={CourseContract.COURSE_NAME,CourseContract.COURSE_UNIT};
-            String[] whereArgs = {""+level,""+semester,""+option};//get course which semester,level and option equals the required course
-            cu = db.query(CourseContract.TABLE_NAME, projection ,
-                    CourseContract.COURSE_LEVEL+" =? AND "+CourseContract.COURSE_SEMESTER+" =?"+" AND( "+CourseContract.COURSE_OPTION+" =? OR "+CourseContract.COURSE_OPTION+" =4)",
+            String[] projection = {CourseContract.COURSE_NAME, CourseContract.COURSE_UNIT};
+            String[] whereArgs = {"" + level, "" + semester, "" + option};//get course which semester,level and option equals the required course
+            cu = db.query(CourseContract.TABLE_NAME, projection,
+                    CourseContract.COURSE_LEVEL + " =? AND " + CourseContract.COURSE_SEMESTER + " =?" + " AND( " + CourseContract.COURSE_OPTION + " =? OR " + CourseContract.COURSE_OPTION + " =4)",
                     whereArgs, null, null, null);
             ArrayList<Course> entries = new ArrayList<>();
             while (cu.moveToNext()) {
@@ -50,22 +50,23 @@ public class CourseData {
             if (db != null) db.close();
         }
     }
-    public ArrayList<Course> getCourseList(int level,int semester,int option){
+
+    public ArrayList<Course> getCourseList(int level, int semester, int option) {
         Cursor cu;
         try {
             db = helper.getReadableDatabase();
-            String[] projection={CourseContract.COURSE_NAME,CourseContract.COURSE_UNIT,CourseContract.COURSE_PREQ,CourseContract.COURSE_TITLE};
-            String[] whereArgs = {""+level,""+semester,""+option};//get course which semester,level and option equals the required course
-            cu = db.query(CourseContract.TABLE_NAME, projection ,
-                    CourseContract.COURSE_LEVEL+" =? AND "+CourseContract.COURSE_SEMESTER+" =?"+" AND( "+CourseContract.COURSE_OPTION+" =? OR "+CourseContract.COURSE_OPTION+" =4)",
+            String[] projection = {CourseContract.COURSE_NAME, CourseContract.COURSE_UNIT, CourseContract.COURSE_PREQ, CourseContract.COURSE_TITLE};
+            String[] whereArgs = {"" + level, "" + semester, "" + option};//get course which semester,level and option equals the required course
+            cu = db.query(CourseContract.TABLE_NAME, projection,
+                    CourseContract.COURSE_LEVEL + " =? AND " + CourseContract.COURSE_SEMESTER + " =?" + " AND( " + CourseContract.COURSE_OPTION + " =? OR " + CourseContract.COURSE_OPTION + " =4)",
                     whereArgs, null, null, null);
             ArrayList<Course> entries = new ArrayList<>();
             while (cu.moveToNext()) {
-                int unit=cu.getInt(cu.getColumnIndexOrThrow(CourseContract.COURSE_UNIT));
-                String name=cu.getString(cu.getColumnIndexOrThrow(CourseContract.COURSE_NAME));
-                String title=cu.getString(cu.getColumnIndexOrThrow(CourseContract.COURSE_TITLE));
-                String preq=cu.getString(cu.getColumnIndexOrThrow(CourseContract.COURSE_PREQ));
-                Course tempCourse=new Course(name,0,unit,level,semester,preq,title);
+                int unit = cu.getInt(cu.getColumnIndexOrThrow(CourseContract.COURSE_UNIT));
+                String name = cu.getString(cu.getColumnIndexOrThrow(CourseContract.COURSE_NAME));
+                String title = cu.getString(cu.getColumnIndexOrThrow(CourseContract.COURSE_TITLE));
+                String preq = cu.getString(cu.getColumnIndexOrThrow(CourseContract.COURSE_PREQ));
+                Course tempCourse = new Course(name, 0, unit, level, semester, preq, title);
                 entries.add(tempCourse);
 
             }
@@ -78,92 +79,93 @@ public class CourseData {
         }
     }
 
-    public void addCourse(ArrayList<Course> entries){
-        db=helper.getWritableDatabase();
+    public void addCourse(ArrayList<Course> entries) {
+        db = helper.getWritableDatabase();
         try {
             db.beginTransaction();
-            for(Course entry:entries){
-                addCourse(entry,db);
+            for (Course entry : entries) {
+                addCourse(entry, db);
             }
             db.setTransactionSuccessful();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             db.endTransaction();
         }
 
     }
-    public void updateCourse(String category,String name){
+
+    public void updateCourse(String category, String name) {
 
     }
-    public void deleteCourse(String category,String name){
+
+    public void deleteCourse(String category, String name) {
 
     }
 
-    public ContentValues getContentValue(Course entry){
-        ContentValues values=new ContentValues();
-        values.put(CourseContract.COURSE_LEVEL,entry.getCourseLevel());
-        values.put(CourseContract.COURSE_NAME,entry.getCourseName());
-        values.put(CourseContract.COURSE_OPTION,entry.getOption());
-        values.put(CourseContract.COURSE_SEMESTER,entry.getCourseSemester());
-        values.put(CourseContract.COURSE_UNIT,entry.getCourseUnit());
-        values.put(CourseContract.COURSE_PREQ,entry.getPrerequisite());
-        values.put(CourseContract.COURSE_TITLE,entry.getTitle());
+    public ContentValues getContentValue(Course entry) {
+        ContentValues values = new ContentValues();
+        values.put(CourseContract.COURSE_LEVEL, entry.getCourseLevel());
+        values.put(CourseContract.COURSE_NAME, entry.getCourseName());
+        values.put(CourseContract.COURSE_OPTION, entry.getOption());
+        values.put(CourseContract.COURSE_SEMESTER, entry.getCourseSemester());
+        values.put(CourseContract.COURSE_UNIT, entry.getCourseUnit());
+        values.put(CourseContract.COURSE_PREQ, entry.getPrerequisite());
+        values.put(CourseContract.COURSE_TITLE, entry.getTitle());
         return values;
     }
 
 
-    public boolean isEmpty(){
-        try{
-            db=helper.getReadableDatabase();
-            Cursor cursor=db.query(CourseContract.TABLE_NAME,null,null,null,null,null,null);
-            if(cursor.moveToFirst()) {
+    public boolean isEmpty() {
+        try {
+            db = helper.getReadableDatabase();
+            Cursor cursor = db.query(CourseContract.TABLE_NAME, null, null, null, null, null, null);
+            if (cursor.moveToFirst()) {
                 return false;
             }
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return true;
-        }finally {
-            if(db!=null){
+        } finally {
+            if (db != null) {
                 db.close();
             }
         }
     }
-    public ArrayList<Course> search(String query){
 
-        String[] selection={"%"+query+"%"};
-         return getSearch(selection);
+    public ArrayList<Course> search(String query) {
+
+        String[] selection = {"%" + query + "%"};
+        return getSearch(selection);
 
     }
 
-    private ArrayList<Course> getSearch(String[] selection){
-        SQLiteDatabase db=null;
-        Cursor cursor =null;
-        ArrayList<Course> searchResult=new ArrayList<>();
-        try{
-            db=helper.getReadableDatabase();
-            cursor =db.query(CourseContract.TABLE_NAME,null,CourseContract.COURSE_NAME+" LIKE ?",selection,null,null,null);
-            while (cursor.moveToNext()){
-                int unit=cursor.getInt(cursor.getColumnIndexOrThrow(CourseContract.COURSE_UNIT));
-                int level=cursor.getInt(cursor.getColumnIndexOrThrow(CourseContract.COURSE_LEVEL));
-                int semester=cursor.getInt(cursor.getColumnIndexOrThrow(CourseContract.COURSE_SEMESTER));
-                String name=cursor.getString(cursor.getColumnIndexOrThrow(CourseContract.COURSE_NAME));
-                String title=cursor.getString(cursor.getColumnIndexOrThrow(CourseContract.COURSE_TITLE));
-                String preq=cursor.getString(cursor.getColumnIndexOrThrow(CourseContract.COURSE_PREQ));
-                Course tempCourse=new Course(name,0,unit,level,semester,preq,title);
+    private ArrayList<Course> getSearch(String[] selection) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        ArrayList<Course> searchResult = new ArrayList<>();
+        try {
+            db = helper.getReadableDatabase();
+            cursor = db.query(CourseContract.TABLE_NAME, null, CourseContract.COURSE_NAME + " LIKE ?", selection, null, null, null);
+            while (cursor.moveToNext()) {
+                int unit = cursor.getInt(cursor.getColumnIndexOrThrow(CourseContract.COURSE_UNIT));
+                int level = cursor.getInt(cursor.getColumnIndexOrThrow(CourseContract.COURSE_LEVEL));
+                int semester = cursor.getInt(cursor.getColumnIndexOrThrow(CourseContract.COURSE_SEMESTER));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(CourseContract.COURSE_NAME));
+                String title = cursor.getString(cursor.getColumnIndexOrThrow(CourseContract.COURSE_TITLE));
+                String preq = cursor.getString(cursor.getColumnIndexOrThrow(CourseContract.COURSE_PREQ));
+                Course tempCourse = new Course(name, 0, unit, level, semester, preq, title);
                 searchResult.add(tempCourse);
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
-            if(cursor!=null){
+        } finally {
+            if (cursor != null) {
                 cursor.close();
             }
         }
-        return searchResult ;
+        return searchResult;
     }
 
 }

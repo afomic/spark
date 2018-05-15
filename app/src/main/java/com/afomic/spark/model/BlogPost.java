@@ -17,11 +17,11 @@ public class BlogPost implements Parcelable {
     private long mTimeStamp;
     private String mPosterName;
     private String mPosterIconUrl;
-    private int  fileType;
+    private int fileType;
     private int status;
 
-    public BlogPost(){
-        mTimeStamp=System.currentTimeMillis();
+    public BlogPost() {
+        mTimeStamp = System.currentTimeMillis();
     }
 
     protected BlogPost(Parcel in) {
@@ -137,9 +137,9 @@ public class BlogPost implements Parcelable {
         this.status = status;
     }
 
-    public class Type{
-        public static final int FILE=0;
-        public static final int BLOG=1;
+    public class Type {
+        public static final int FILE = 0;
+        public static final int BLOG = 1;
 
     }
 

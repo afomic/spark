@@ -31,7 +31,7 @@ public class HelpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.help,container,false);
         ExpandableListView helpList= v.findViewById(R.id.help_expandable);
-        Toolbar mToolbar=(Toolbar) v.findViewById(R.id.help_toolbar);
+        Toolbar mToolbar= v.findViewById(R.id.help_toolbar);
         AppCompatActivity act=(AppCompatActivity)getActivity();
         act.setSupportActionBar(mToolbar);
         act.getSupportActionBar().setDisplayHomeAsUpEnabled(true);

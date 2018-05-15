@@ -4,26 +4,27 @@ package com.afomic.spark.model;
  * Created by afomic on 26-Oct-16.
  */
 public class Constitution {
-    private int article,section;
-    private String content,title;
+    private int article, section;
+    private String content, title;
 
 
-    public Constitution(){
+    public Constitution() {
 
     }
 
-    public Constitution(int article, int section,String title, String content) {
+    public Constitution(int article, int section, String title, String content) {
         this.article = article;
         this.section = section;
         this.content = content;
-        this.title=title;
+        this.title = title;
     }
 
 
     public int getSection() {
         return section;
     }
-    public String getTitle(){
+
+    public String getTitle() {
         return title;
     }
 

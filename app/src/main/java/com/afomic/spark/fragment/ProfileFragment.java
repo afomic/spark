@@ -37,28 +37,29 @@ public class ProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.profile_layout,container,false);
-        Toolbar toolbar=v.findViewById(R.id.toolbar);
-        AppCompatActivity act=(AppCompatActivity)getActivity();
+        View v = inflater.inflate(R.layout.profile_layout, container, false);
+        Toolbar toolbar = v.findViewById(R.id.toolbar);
+        AppCompatActivity act = (AppCompatActivity) getActivity();
         act.setSupportActionBar(toolbar);
-        ActionBar actionBar=act.getSupportActionBar();
-        if(actionBar!=null){
+        ActionBar actionBar = act.getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_hamburger);
             actionBar.setTitle("Profile");
         }
-        GridView profiles=(GridView) v.findViewById(R.id.profile_grid);
+        GridView profiles = (GridView) v.findViewById(R.id.profile_grid);
         profiles.setAdapter(new ProfileAdapter(getActivity()));
         profiles.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(getActivity(), ProfileActivity.class);
-                intent.putExtra(Constants.TYPE,i);
+                Intent intent = new Intent(getActivity(), ProfileActivity.class);
+                intent.putExtra(Constants.TYPE, i);
                 startActivity(intent);
             }
         });
         return v;
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();

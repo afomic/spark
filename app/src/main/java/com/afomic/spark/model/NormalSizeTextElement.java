@@ -6,11 +6,11 @@ import android.os.Parcel;
  * Created by afomic on 11/4/17.
  */
 
-public class NormalSizeTextElement implements BlogElement{
+public class NormalSizeTextElement implements BlogElement {
     private String body;
 
-    public NormalSizeTextElement(){
-        this.body="";
+    public NormalSizeTextElement() {
+        this.body = "";
     }
 
     protected NormalSizeTextElement(Parcel in) {
@@ -54,6 +54,6 @@ public class NormalSizeTextElement implements BlogElement{
 
     @Override
     public String toHtml() {
-        return "<nt>"+body+"</nt>";
+        return "<nt>" + body + "</nt>";
     }
 }

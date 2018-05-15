@@ -24,20 +24,21 @@ import com.afomic.spark.data.PreferenceManager;
  * Created by afomic on 22-Oct-16.
  */
 public class SetPasswordDialog extends DialogFragment {
-    int semester,level,option,action;
-    double totalUnit,totalPoint;
-    EditText password,passWordAgain;
+    int semester, level, option, action;
+    double totalUnit, totalPoint;
+    EditText password, passWordAgain;
     TextView instruction;
     PreferenceManager preference;
-    public static SetPasswordDialog getInstance(int semester,int level,int option,double totalPoint,double totalUnit,int action){
-        SetPasswordDialog dialog=new SetPasswordDialog();
-        Bundle args=new Bundle();
-        args.putInt(Constants.SEMESTER,semester);
-        args.putInt(Constants.LEVEL,level);
-        args.putInt(Constants.OPTION,option);
-        args.putDouble(Constants.TOTAL_POINT,totalPoint);
-        args.putDouble(Constants.TOTAL_UNIT,totalUnit);
-        args.putInt(Constants.ACTION,action);
+
+    public static SetPasswordDialog getInstance(int semester, int level, int option, double totalPoint, double totalUnit, int action) {
+        SetPasswordDialog dialog = new SetPasswordDialog();
+        Bundle args = new Bundle();
+        args.putInt(Constants.SEMESTER, semester);
+        args.putInt(Constants.LEVEL, level);
+        args.putInt(Constants.OPTION, option);
+        args.putDouble(Constants.TOTAL_POINT, totalPoint);
+        args.putDouble(Constants.TOTAL_UNIT, totalUnit);
+        args.putInt(Constants.ACTION, action);
         dialog.setArguments(args);
         return dialog;
     }
@@ -45,24 +46,24 @@ public class SetPasswordDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle=getArguments();
-        semester=bundle.getInt(Constants.SEMESTER);
-        level=bundle.getInt(Constants.LEVEL);
-        option=bundle.getInt(Constants.OPTION);
-        totalPoint=bundle.getDouble(Constants.TOTAL_POINT);
-        totalUnit=bundle.getDouble(Constants.TOTAL_UNIT);
-        action=bundle.getInt(Constants.ACTION);
-        preference=new PreferenceManager(getActivity());
+        Bundle bundle = getArguments();
+        semester = bundle.getInt(Constants.SEMESTER);
+        level = bundle.getInt(Constants.LEVEL);
+        option = bundle.getInt(Constants.OPTION);
+        totalPoint = bundle.getDouble(Constants.TOTAL_POINT);
+        totalUnit = bundle.getDouble(Constants.TOTAL_UNIT);
+        action = bundle.getInt(Constants.ACTION);
+        preference = new PreferenceManager(getActivity());
     }
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-        View v= LayoutInflater.from(getActivity()).inflate(R.layout.set_password,null);
-        password=(EditText)v.findViewById(R.id.edt_password);
-        passWordAgain=(EditText) v.findViewById(R.id.edt_confirm_password);
-        instruction=(TextView) v.findViewById(R.id.tv_instruction);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        View v = LayoutInflater.from(getActivity()).inflate(R.layout.set_password, null);
+        password = (EditText) v.findViewById(R.id.edt_password);
+        passWordAgain = (EditText) v.findViewById(R.id.edt_confirm_password);
+        instruction = (TextView) v.findViewById(R.id.tv_instruction);
         builder.setView(v);
         switch (action) {
             case Constants.SAVE_DATA:
@@ -100,7 +101,7 @@ public class SetPasswordDialog extends DialogFragment {
                         String pass = password.getText().toString();
                         if (pass.equals(preference.getPassword())) {
                             PreferenceManager.setLoggedIn();
-                             sendData();
+                            sendData();
                         } else {
                             Toast.makeText(getActivity(), "Incorrect Password", Toast.LENGTH_SHORT).show();
                         }
@@ -128,7 +129,7 @@ public class SetPasswordDialog extends DialogFragment {
                         preference.setTotalUnit((int) totalUnit);
                         preference.setOption(option);
                         Toast.makeText(getActivity(), "Detail Updated Successfully", Toast.LENGTH_SHORT).show();
-                        Log.d(Constants.TAG,"level "+level+" smes "+semester+" tp " +totalPoint+" total Unit "+totalUnit+" total point"+totalPoint);
+                        Log.d(Constants.TAG, "level " + level + " smes " + semester + " tp " + totalPoint + " total Unit " + totalUnit + " total point" + totalPoint);
                         getActivity().finish();
                     }
                 });
@@ -145,19 +146,20 @@ public class SetPasswordDialog extends DialogFragment {
 
         return builder.create();
     }
-    public void sendData(){
+
+    public void sendData() {
         level = preference.getLevel();
         semester = preference.getSemester();
         option = preference.getOption();
         totalUnit = preference.getTotalUnit();
         totalPoint = preference.getTotalPoint();
-        Log.d(Constants.TAG,"level "+level+" smes "+semester+" tp " +totalPoint+" total Unit "+totalUnit+" total point"+totalPoint);
+        Log.d(Constants.TAG, "level " + level + " smes " + semester + " tp " + totalPoint + " total Unit " + totalUnit + " total point" + totalPoint);
         Intent intent = new Intent(getActivity(), GypeeActivity.class);
         intent.putExtra(Constants.LEVEL, level);
         intent.putExtra(Constants.SEMESTER, semester);
         intent.putExtra(Constants.OPTION, option);
-        intent.putExtra(Constants.TOTAL_UNIT, (int)totalUnit);
-        intent.putExtra(Constants.TOTAL_POINT,(int) totalPoint);
+        intent.putExtra(Constants.TOTAL_UNIT, (int) totalUnit);
+        intent.putExtra(Constants.TOTAL_POINT, (int) totalPoint);
         getActivity().startActivity(intent);
     }
 }

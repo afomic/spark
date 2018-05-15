@@ -22,13 +22,13 @@ import com.afomic.spark.data.Constants;
 
 /**
  * Created by afomic on 18-Oct-16.
- *
  */
 public class CourseListFragment extends Fragment {
     ExpendableListAdapter adapter;
     ExpandableListView courseList;
-    public static CourseListFragment getInstance(){
-        CourseListFragment fragment=new CourseListFragment();
+
+    public static CourseListFragment getInstance() {
+        CourseListFragment fragment = new CourseListFragment();
         return fragment;
     }
 
@@ -37,23 +37,23 @@ public class CourseListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         //inflate the courselist layout
-        View v=inflater.inflate(R.layout.course_list_home,container,false);
+        View v = inflater.inflate(R.layout.course_list_home, container, false);
 
-        Toolbar toolbar=(Toolbar)v.findViewById(R.id.toolbar);
-        AppCompatActivity act=(AppCompatActivity)getActivity();
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        AppCompatActivity act = (AppCompatActivity) getActivity();
         act.setSupportActionBar(toolbar);
-        ActionBar actionBar=act.getSupportActionBar();
-        if(actionBar!=null){
+        ActionBar actionBar = act.getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_hamburger);
             actionBar.setTitle("Course List");
         }
 
         //creating an adapter for the expandable list view
-        adapter= new ExpendableListAdapter(getContext());
+        adapter = new ExpendableListAdapter(getContext());
 
         //initialize the expendable list view that will show the list of courses in each level
-        courseList=(ExpandableListView)v.findViewById(R.id.exp_course_list);
+        courseList = (ExpandableListView) v.findViewById(R.id.exp_course_list);
 
         //set the adapater to control the expandable list view
         courseList.setAdapter(adapter);
@@ -61,10 +61,10 @@ public class CourseListFragment extends Fragment {
         courseList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent=new Intent(getActivity(), CourseListActivity.class);
+                Intent intent = new Intent(getActivity(), CourseListActivity.class);
                 childPosition++;
-                intent.putExtra(Constants.LEVEL,groupPosition);
-                intent.putExtra(Constants.OPTION,childPosition);
+                intent.putExtra(Constants.LEVEL, groupPosition);
+                intent.putExtra(Constants.OPTION, childPosition);
                 startActivity(intent);
                 return true;
             }
@@ -75,8 +75,8 @@ public class CourseListFragment extends Fragment {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                if(groupPosition != previousItem )
-                    courseList.collapseGroup(previousItem );
+                if (groupPosition != previousItem)
+                    courseList.collapseGroup(previousItem);
                 previousItem = groupPosition;
             }
         });

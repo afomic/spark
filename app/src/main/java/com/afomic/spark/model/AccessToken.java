@@ -8,7 +8,8 @@ public class AccessToken {
     private String id;
     private String departmentName;
     private String associationName;
-    private boolean used =false;
+    private boolean used = false;
+    private String option;
 
     public AccessToken() {
     }
@@ -19,6 +20,14 @@ public class AccessToken {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getOption() {
+        return option;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
     }
 
     public String getDepartmentName() {

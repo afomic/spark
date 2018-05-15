@@ -19,35 +19,34 @@ import com.afomic.spark.adapter.FeedBackAdapter;
 
 /**
  * Created by afomic on 27-Dec-16.
- *
  */
 
 public class FeedbackFragment extends Fragment {
-    public static FeedbackFragment newInstance(){
+    public static FeedbackFragment newInstance() {
         return new FeedbackFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.feedback,container,false);
-        Toolbar toolbar=(Toolbar)v.findViewById(R.id.feed_toolbar);
-        AppCompatActivity act=(AppCompatActivity)getActivity();
+        View v = inflater.inflate(R.layout.feedback, container, false);
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.feed_toolbar);
+        AppCompatActivity act = (AppCompatActivity) getActivity();
         act.setSupportActionBar(toolbar);
         act.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         act.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_hamburger);
         act.getSupportActionBar().setTitle("Feedback");
-        FeedBackAdapter adapter=new FeedBackAdapter(getActivity());
-        ListView feedbacks=(ListView) v.findViewById(R.id.feedback_list);
+        FeedBackAdapter adapter = new FeedBackAdapter(getActivity());
+        ListView feedbacks = (ListView) v.findViewById(R.id.feedback_list);
         feedbacks.setAdapter(adapter);
 
         feedbacks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent();
-                switch (i){
+                Intent intent = new Intent();
+                switch (i) {
                     case 0:
-                       intent.setAction(Intent.ACTION_VIEW);
+                        intent.setAction(Intent.ACTION_VIEW);
                         Uri webpage = Uri.parse("https://www.facebook.com/groups/154245617978681/");
                         intent.setData(webpage);
                         if (intent.resolveActivity(getActivity().getPackageManager()) != null) {

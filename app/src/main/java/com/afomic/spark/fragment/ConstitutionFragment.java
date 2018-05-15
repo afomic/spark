@@ -31,7 +31,6 @@ import com.afomic.spark.data.Constants;
 
 /**
  * Created by afomic on 17-Oct-16.
- *
  */
 public class ConstitutionFragment extends Fragment {
     ExpandableListView constitutionList;
@@ -41,14 +40,15 @@ public class ConstitutionFragment extends Fragment {
     SearchAdapter searchAdapter;
     ConstitutionAdapter adapter;
     MenuItem item;
-    public static ConstitutionFragment getInstance(){
+
+    public static ConstitutionFragment getInstance() {
         return new ConstitutionFragment();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        searchAdapter=new SearchAdapter(getActivity());
+        searchAdapter = new SearchAdapter(getActivity());
         setHasOptionsMenu(true);
 
     }
@@ -57,25 +57,25 @@ public class ConstitutionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //inflate the constitution layout
-        View view  =inflater.inflate(R.layout.constitution_home,container,false);
+        View view = inflater.inflate(R.layout.constitution_home, container, false);
         //initiate the list view
-        Toolbar toolbar=view.findViewById(R.id.toolbar);
-        AppCompatActivity act=(AppCompatActivity)getActivity();
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        AppCompatActivity act = (AppCompatActivity) getActivity();
         act.setSupportActionBar(toolbar);
-        ActionBar actionBar=act.getSupportActionBar();
-        if(actionBar!=null){
+        ActionBar actionBar = act.getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_hamburger);
             actionBar.setTitle("Constitution");
         }
-        searchLayout=(LinearLayout) view.findViewById(R.id.con_search_layout);
-        constitutionSearchList=(RecyclerView) view.findViewById(R.id.con_search_recycler);
-        constitutionList =(ExpandableListView)view.findViewById(R.id.lv_constitution);
-        TextView emptyView=(TextView) view.findViewById(R.id.empty_search_view);
-        adapter=new ConstitutionAdapter(getContext());
+        searchLayout = (LinearLayout) view.findViewById(R.id.con_search_layout);
+        constitutionSearchList = (RecyclerView) view.findViewById(R.id.con_search_recycler);
+        constitutionList = (ExpandableListView) view.findViewById(R.id.lv_constitution);
+        TextView emptyView = (TextView) view.findViewById(R.id.empty_search_view);
+        adapter = new ConstitutionAdapter(getContext());
         constitutionList.setAdapter(adapter);
         //set the adapter for the searchList
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         constitutionSearchList.setLayoutManager(layoutManager);
         constitutionSearchList.setAdapter(searchAdapter);
         //setting onclick listener to each of the list
@@ -84,10 +84,10 @@ public class ConstitutionFragment extends Fragment {
         constitutionList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent=new Intent(getActivity(), ConstitutionViewerActivity.class);
-                intent.putExtra(Constants.SECTION,childPosition);
-                intent.putExtra(Constants.ARTICLE,groupPosition);
-                intent.putExtra(Constants.SIZE,adapter.getChildrenCount(groupPosition));
+                Intent intent = new Intent(getActivity(), ConstitutionViewerActivity.class);
+                intent.putExtra(Constants.SECTION, childPosition);
+                intent.putExtra(Constants.ARTICLE, groupPosition);
+                intent.putExtra(Constants.SIZE, adapter.getChildrenCount(groupPosition));
                 startActivity(intent);
                 return true;
             }
@@ -97,9 +97,9 @@ public class ConstitutionFragment extends Fragment {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                if(groupPosition != previousItem )
-                    constitutionList.collapseGroup(previousItem );
-                    previousItem = groupPosition;
+                if (groupPosition != previousItem)
+                    constitutionList.collapseGroup(previousItem);
+                previousItem = groupPosition;
             }
         });
         //override on back pressed so as to return to the expandable listview when back is pressed and searchLayout is on
@@ -110,9 +110,9 @@ public class ConstitutionFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
-       inflater.inflate(R.menu.menu_constitution,menu);
-       item =menu.findItem(R.id.menu_con_search);
-        constitutionSearch=(SearchView) MenuItemCompat.getActionView(item);
+        inflater.inflate(R.menu.menu_constitution, menu);
+        item = menu.findItem(R.id.menu_con_search);
+        constitutionSearch = (SearchView) MenuItemCompat.getActionView(item);
         constitutionSearch.setLayoutParams(new ActionBar.LayoutParams(Gravity.RIGHT));
         constitutionSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -133,7 +133,7 @@ public class ConstitutionFragment extends Fragment {
 
     @Override
     public void onPause() {
-        if(searchLayout.isShown()){
+        if (searchLayout.isShown()) {
             searchLayout.setVisibility(View.GONE);
             constitutionList.setVisibility(View.VISIBLE);
             item.collapseActionView();

@@ -8,8 +8,9 @@ import android.os.Parcel;
 
 public class BigSizeTextElement implements BlogElement {
     private String body;
-    public BigSizeTextElement(){
-        this.body="";
+
+    public BigSizeTextElement() {
+        this.body = "";
     }
 
     protected BigSizeTextElement(Parcel in) {
@@ -53,7 +54,7 @@ public class BigSizeTextElement implements BlogElement {
 
     @Override
     public String toHtml() {
-        return "<bt>"+body+"</bt>";
+        return "<bt>" + body + "</bt>";
     }
 }
 

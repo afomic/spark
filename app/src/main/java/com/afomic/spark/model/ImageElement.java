@@ -7,17 +7,16 @@ import com.google.firebase.database.Exclude;
 
 /**
  * Created by afomic on 11/4/17.
- *
  */
 
 public class ImageElement implements BlogElement {
     private String imageUrl;
     private String imageDescription;
     private Uri imageUri;
-    private boolean uploaded =false;
+    private boolean uploaded = false;
 
-    public ImageElement(){
-        imageUrl="";
+    public ImageElement() {
+        imageUrl = "";
     }
 
     protected ImageElement(Parcel in) {
@@ -75,6 +74,7 @@ public class ImageElement implements BlogElement {
     public void setUploaded(boolean uploaded) {
         this.uploaded = uploaded;
     }
+
     @Exclude
     public Uri getImageUri() {
         return imageUri;
@@ -91,7 +91,7 @@ public class ImageElement implements BlogElement {
 
     @Override
     public String toHtml() {
-        return "<imv>"+imageUrl+"</imv>";
+        return "<imv>" + imageUrl + "</imv>";
     }
 
 }

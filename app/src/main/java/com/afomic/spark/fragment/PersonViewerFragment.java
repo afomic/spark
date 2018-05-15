@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-
 import com.afomic.spark.R;
 import com.afomic.spark.adapter.PersonAdapter;
 import com.afomic.spark.data.PreferenceManager;
@@ -24,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 import java.util.ArrayList;
 
 
@@ -32,9 +30,9 @@ import java.util.ArrayList;
  * Created by afomic on 17-Oct-16.
  */
 public class PersonViewerFragment extends Fragment {
+    private static final String BUNDLE_TYPE = "type";
     RecyclerView grid;
     int type;
-    private static final String BUNDLE_TYPE = "type";
     private ArrayList<Profile> mProfiles;
     private DatabaseReference profileRef;
     private PersonAdapter adapter;
@@ -94,7 +92,7 @@ public class PersonViewerFragment extends Fragment {
                         if (mProfiles.size() > 0) {
                             adapter.notifyDataSetChanged();
                             mEmptyView.setVisibility(View.GONE);
-                        }else {
+                        } else {
                             mEmptyView.setVisibility(View.VISIBLE);
                         }
 

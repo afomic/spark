@@ -8,8 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by afomic on 18-Oct-16.
  */
 public class DbHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME="nacoss";
-    private static final int VERSION=1;
+    private static final String DB_NAME = "nacoss";
+    private static final int VERSION = 1;
 
     public DbHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
@@ -24,7 +24,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        CourseContract.onUpgrade(db,oldVersion,newVersion);
+        CourseContract.onUpgrade(db, oldVersion, newVersion);
         TimeTableContract.onUpgrade(db, oldVersion, newVersion);
     }
 }

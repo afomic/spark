@@ -24,27 +24,28 @@ import com.afomic.spark.util.TextUtil;
 
 /**
  * Created by afomic on 22-Oct-16.
- *
  */
 public class ConstitutionDetailFragment extends Fragment {
-    int article,section,start;
+    int article, section, start;
     String query;
     TextView articleName;
-    boolean isArticleListVisible=false;
+    boolean isArticleListVisible = false;
     constitutionCallback callback;
-    TextView sectionName,constitution;
+    TextView sectionName, constitution;
     ImageView openAndClose;
     ListView articleList;
     ScrollView scrollView;
-    public interface constitutionCallback{
+
+    public interface constitutionCallback {
         public void articleSelected(int section);
     }
-    public static ConstitutionDetailFragment getInstance(int article,int section,String query){
-        ConstitutionDetailFragment fragment=new ConstitutionDetailFragment();
-        Bundle arg=new Bundle();
+
+    public static ConstitutionDetailFragment getInstance(int article, int section, String query) {
+        ConstitutionDetailFragment fragment = new ConstitutionDetailFragment();
+        Bundle arg = new Bundle();
         arg.putInt(Constants.ARTICLE, article);
         arg.putInt(Constants.SECTION, section);
-        arg.putString(Constants.QUERY,query);
+        arg.putString(Constants.QUERY, query);
         fragment.setArguments(arg);
         return fragment;
     }
@@ -52,31 +53,31 @@ public class ConstitutionDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle=getArguments();
+        Bundle bundle = getArguments();
         setHasOptionsMenu(true);
-        article=bundle.getInt(Constants.ARTICLE);
-        section=bundle.getInt(Constants.SECTION);
-        query=bundle.getString(Constants.QUERY,"");
+        article = bundle.getInt(Constants.ARTICLE);
+        section = bundle.getInt(Constants.SECTION);
+        query = bundle.getString(Constants.QUERY, "");
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.constitution_detail,container,false);
-        constitution  =(TextView) v.findViewById(R.id.tv_constitution_detail);
-        articleName=(TextView) v.findViewById(R.id.article_btn);
-        sectionName=(TextView) v.findViewById(R.id.section_name);
-        articleList=(ListView) v.findViewById(R.id.article_list);
-        openAndClose=(ImageView) v.findViewById(R.id.opem_close);
-        scrollView=(ScrollView) v.findViewById(R.id.scroll);
+        View v = inflater.inflate(R.layout.constitution_detail, container, false);
+        constitution = (TextView) v.findViewById(R.id.tv_constitution_detail);
+        articleName = (TextView) v.findViewById(R.id.article_btn);
+        sectionName = (TextView) v.findViewById(R.id.section_name);
+        articleList = (ListView) v.findViewById(R.id.article_list);
+        openAndClose = (ImageView) v.findViewById(R.id.opem_close);
+        scrollView = (ScrollView) v.findViewById(R.id.scroll);
 
         //set the constitution on the page
         /*
-        *set an onclick listener on the textview to make the list view visible
-        * when its pressed
+         *set an onclick listener on the textview to make the list view visible
+         * when its pressed
          */
 
-        articleList.setAdapter(new ArticleListAdapter(getActivity(),article));
+        articleList.setAdapter(new ArticleListAdapter(getActivity(), article));
         articleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -86,33 +87,32 @@ public class ConstitutionDetailFragment extends Fragment {
         });
 
 
-
-        View.OnClickListener listener=new View.OnClickListener() {
+        View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(!isArticleListVisible){
+                if (!isArticleListVisible) {
                     articleList.setVisibility(View.VISIBLE);
                     openAndClose.setImageResource(R.drawable.ic_up);
-                    isArticleListVisible=true;
-                }else {
+                    isArticleListVisible = true;
+                } else {
                     articleList.setVisibility(View.GONE);
                     openAndClose.setImageResource(R.drawable.ic_down);
-                    isArticleListVisible=false;
+                    isArticleListVisible = false;
                 }
 
             }
         };
         articleName.setOnClickListener(listener);
         openAndClose.setOnClickListener(listener);
-        ConstitutionData data=ConstitutionData.get();
-        articleName.setText("Article "+(article +1));
-        sectionName.setText("Section "+(section+1));
-        String con=data.getSection(article,section).getContent();
-        CharSequence span=Html.fromHtml(con);
+        ConstitutionData data = ConstitutionData.get();
+        articleName.setText("Article " + (article + 1));
+        sectionName.setText("Section " + (section + 1));
+        String con = data.getSection(article, section).getContent();
+        CharSequence span = Html.fromHtml(con);
 
-        if(!query.equals("")) {//check to see if the content of the constitution is to be highlighted
-            String lower=con.toLowerCase();
+        if (!query.equals("")) {//check to see if the content of the constitution is to be highlighted
+            String lower = con.toLowerCase();
             start = Html.fromHtml(lower).toString().indexOf(query.toLowerCase());
             int end = start + query.length();
             constitution.setText(TextUtil.highLight(start, end, span));
@@ -124,7 +124,7 @@ public class ConstitutionDetailFragment extends Fragment {
                 }
             });
 
-        }else {
+        } else {
             constitution.setText(span);
         }
         //make the first the present article cyan so as to make it more interactive
@@ -135,18 +135,18 @@ public class ConstitutionDetailFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        callback=(constitutionCallback) context;
+        callback = (constitutionCallback) context;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        callback=null;
+        callback = null;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             getActivity().finish();
         }
         return super.onOptionsItemSelected(item);

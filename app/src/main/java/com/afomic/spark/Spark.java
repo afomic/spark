@@ -7,7 +7,6 @@ import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by afomic on 11/3/17.
- *
  */
 
 public class Spark extends Application {

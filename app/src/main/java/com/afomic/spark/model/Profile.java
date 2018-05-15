@@ -4,16 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-
 /**
  * Created by afomic on 17-Oct-16.
- *
  */
-public class Profile implements Parcelable{
+public class Profile implements Parcelable {
     private String areaOfSpecialization;
     private String roomNumber;
     private String degrees;
-    private  String name;
+    private String name;
     private String telephoneNumber;
     private String email;
     private String level;
@@ -23,7 +21,7 @@ public class Profile implements Parcelable{
     private String id;
 
 
-    public Profile(){
+    public Profile() {
 
     }
 
@@ -74,10 +72,10 @@ public class Profile implements Parcelable{
         dest.writeString(id);
     }
 
-    public class Type{
-        public static final int EXCO=0;
-        public static final int LECTURER=2 ;
-        public static final int PARLIAMENTARIAN =1 ;
+    public class Type {
+        public static final int EXCO = 0;
+        public static final int LECTURER = 2;
+        public static final int PARLIAMENTARIAN = 1;
 
     }
 

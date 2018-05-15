@@ -10,113 +10,122 @@ import android.util.Log;
  */
 public class PreferenceManager {
     private SharedPreferences preferences;
-    private static boolean loggedIn=false;
+    private static boolean loggedIn = false;
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
-    private static final String PREF_DEPARTMENT_NAME="department";
-    private static final String PREF_USER_ID="id";
-    private String emptyString="djkljcamcxk";
+    private static final String PREF_DEPARTMENT_NAME = "department";
+    private static final String PREF_USER_ID = "id";
+    private String emptyString = "djkljcamcxk";
 
-    public PreferenceManager(Context context){
-        preferences=context.getSharedPreferences(Constants.PREF_NAME, 0);
-    }
-    public static void setLoggedIn(){
-        loggedIn=true;
-    }
-    public static void setLoggedOut(){
-        loggedIn=false;
+    public PreferenceManager(Context context) {
+        preferences = context.getSharedPreferences(Constants.PREF_NAME, 0);
     }
 
+    public static void setLoggedIn() {
+        loggedIn = true;
+    }
 
-    public static boolean isLoggedIn(){
+    public static void setLoggedOut() {
+        loggedIn = false;
+    }
+
+
+    public static boolean isLoggedIn() {
         return loggedIn;
     }
 
     public String getPassword() {
-        return preferences.getString(Constants.PASSWORD,"none");
+        return preferences.getString(Constants.PASSWORD, "none");
     }
 
     public void setPassword(String password) {
-        SharedPreferences.Editor editor=preferences.edit();
-        editor.putString(Constants.PASSWORD,password);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(Constants.PASSWORD, password);
         editor.apply();
     }
 
-    public void setUserId(String userId){
-        SharedPreferences.Editor mEditor=preferences.edit();
-        mEditor.putString(PREF_USER_ID,userId);
+    public void setUserId(String userId) {
+        SharedPreferences.Editor mEditor = preferences.edit();
+        mEditor.putString(PREF_USER_ID, userId);
         mEditor.apply();
     }
-    public String getUserId(){
-        return preferences.getString(PREF_USER_ID,emptyString);
+
+    public String getUserId() {
+        return preferences.getString(PREF_USER_ID, emptyString);
     }
+
     public int getSemester() {
         return preferences.getInt(Constants.SEMESTER, 1);
     }
 
     public void setSemester(int semester) {
-        SharedPreferences.Editor editor=preferences.edit();
+        SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(Constants.SEMESTER, semester);
         editor.apply();
     }
+
     public int getTotalUnit() {
         return preferences.getInt(Constants.TOTAL_UNIT, 1);
     }
 
     public void setTotalUnit(int totalUnit) {
-        SharedPreferences.Editor editor=preferences.edit();
+        SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(Constants.TOTAL_UNIT, totalUnit);
         editor.apply();
     }
+
     public int getTotalPoint() {
         return preferences.getInt(Constants.TOTAL_POINT, 1);
     }
 
     public void setTotalPoint(int totalPoint) {
-        SharedPreferences.Editor editor=preferences.edit();
+        SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(Constants.TOTAL_POINT, totalPoint);
         editor.apply();
     }
 
     public int getLevel() {
-        return  preferences.getInt(Constants.LEVEL, 1);
+        return preferences.getInt(Constants.LEVEL, 1);
     }
 
     public void setLevel(int level) {
-        Log.e(Constants.TAG,""+level);
-        SharedPreferences.Editor editor=preferences.edit();
+        Log.e(Constants.TAG, "" + level);
+        SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(Constants.LEVEL, level);
         editor.apply();
     }
 
     public int getOption() {
-        return preferences.getInt(Constants.OPTION,1);
+        return preferences.getInt(Constants.OPTION, 1);
     }
 
     public void setOption(int option) {
-        SharedPreferences.Editor editor=preferences.edit();
+        SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(Constants.OPTION, option);
         editor.apply();
     }
-    public boolean isThereASavedData(){
+
+    public boolean isThereASavedData() {
         return !(getPassword().equals("none"));
     }
 
     public void setFirstTimeLaunch(boolean isFirstTime) {
-        SharedPreferences.Editor editor=preferences.edit();
+        SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
         editor.apply();
     }
+
     public void setDepartmentName(String departmentName) {
-        SharedPreferences.Editor editor=preferences.edit();
-        editor.putString(PREF_DEPARTMENT_NAME,departmentName);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_DEPARTMENT_NAME, departmentName);
         editor.apply();
     }
 
     public boolean isFirstTimeLaunch() {
         return preferences.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
+
     public String getDepartmentName() {
-        return preferences.getString(PREF_DEPARTMENT_NAME,"");
+        return preferences.getString(PREF_DEPARTMENT_NAME, "");
     }
 
 }

@@ -7,12 +7,6 @@ import android.os.Parcel;
  */
 
 public class BulletListTextElement implements BlogElement {
-    public String body;
-
-    protected BulletListTextElement(Parcel in) {
-        body = in.readString();
-    }
-
     public static final Creator<BulletListTextElement> CREATOR = new Creator<BulletListTextElement>() {
         @Override
         public BulletListTextElement createFromParcel(Parcel in) {
@@ -24,6 +18,15 @@ public class BulletListTextElement implements BlogElement {
             return new BulletListTextElement[size];
         }
     };
+    public String body;
+
+    protected BulletListTextElement(Parcel in) {
+        body = in.readString();
+    }
+
+    public BulletListTextElement() {
+        this.body = "";
+    }
 
     @Override
     public int describeContents() {
@@ -33,10 +36,6 @@ public class BulletListTextElement implements BlogElement {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(body);
-    }
-
-    public BulletListTextElement(){
-        this.body="";
     }
 
     public String getBody() {
@@ -54,6 +53,6 @@ public class BulletListTextElement implements BlogElement {
 
     @Override
     public String toHtml() {
-        return "<bl>"+body+"</bl>";
+        return "<bl>" + body + "</bl>";
     }
 }
