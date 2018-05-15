@@ -3,7 +3,11 @@ package com.afomic.spark.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,9 +28,10 @@ import com.afomic.spark.data.Constants;
  * Created by afomic on 18-Oct-16.
  */
 public class CourseListFragment extends Fragment {
-    ExpendableListAdapter adapter;
-    ExpandableListView courseList;
-
+    ViewPager pager;
+    int level=0;
+    TabLayout tabs;
+    String[] title={"Electives","Part One","Part Two","Part Three","Part Four","Part Five"};
     public static CourseListFragment getInstance() {
         CourseListFragment fragment = new CourseListFragment();
         return fragment;
@@ -39,7 +44,7 @@ public class CourseListFragment extends Fragment {
         //inflate the courselist layout
         View v = inflater.inflate(R.layout.course_list_home, container, false);
 
-        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        Toolbar toolbar =  v.findViewById(R.id.pager_toolbar);
         AppCompatActivity act = (AppCompatActivity) getActivity();
         act.setSupportActionBar(toolbar);
         ActionBar actionBar = act.getSupportActionBar();
@@ -48,40 +53,30 @@ public class CourseListFragment extends Fragment {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_hamburger);
             actionBar.setTitle("Course List");
         }
+        FragmentManager fm=getFragmentManager();
 
-        //creating an adapter for the expandable list view
-        adapter = new ExpendableListAdapter(getContext());
+        pager=(ViewPager)v.findViewById(R.id.single_pager);
+        tabs=(TabLayout) v.findViewById(R.id.course_tab_layout);
+        tabs.setupWithViewPager(pager);
 
-        //initialize the expendable list view that will show the list of courses in each level
-        courseList = (ExpandableListView) v.findViewById(R.id.exp_course_list);
 
-        //set the adapater to control the expandable list view
-        courseList.setAdapter(adapter);
-
-        courseList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        pager.setAdapter(new FragmentPagerAdapter(fm) {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent = new Intent(getActivity(), CourseListActivity.class);
-                childPosition++;
-                intent.putExtra(Constants.LEVEL, groupPosition);
-                intent.putExtra(Constants.OPTION, childPosition);
-                startActivity(intent);
-                return true;
+            public Fragment getItem(int position) {
+                return CourseListDetailFragment.getInstance(position);
+            }
+
+            @Override
+            public int getCount() {
+                return 6;
+            }
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return title[position];
             }
         });
 
-        courseList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            int previousItem = -1;
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                if (groupPosition != previousItem)
-                    courseList.collapseGroup(previousItem);
-                previousItem = groupPosition;
-            }
-        });
-
-
+        pager.setCurrentItem(level);
         return v;
     }
 

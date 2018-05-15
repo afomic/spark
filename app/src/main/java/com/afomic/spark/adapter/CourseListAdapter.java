@@ -21,20 +21,19 @@ import java.util.ArrayList;
  */
 public class CourseListAdapter extends BaseExpandableListAdapter {
     Context context;
-    private int level,option;
+    private int level;
      private  ArrayList<Course> firstSemester,secondSemester;
      private CourseData dbData;
     int[] layouts={R.layout.restricted_econs, R.layout.restricted_eng,R.layout.restricted_math};
     private String[] semesters={"Harmattan Semester","Rain semester"};
     private String[] electives={"Special Electives","Restricted Electives"};
-    public CourseListAdapter(Context c,int level,int option){
+    public CourseListAdapter(Context c,int level){
         this.level=level;
-        this.option=option;
         context=c;
         dbData=new CourseData(context);
         if(level!=0){//check to see if its not an Electives
-            firstSemester=dbData.getCourseList(level, 1, option);
-            secondSemester=dbData.getCourseList(level, 2, option);
+            firstSemester=dbData.getCourseList(level, 1);
+            secondSemester=dbData.getCourseList(level, 2);
         }
 
     }
@@ -116,7 +115,7 @@ public class CourseListAdapter extends BaseExpandableListAdapter {
         if(level==0&&groupPosition==0){
             return LayoutInflater.from(context).inflate(R.layout.special_electives,parent,false);
         }else if(level==0&&groupPosition==1){
-            return LayoutInflater.from(context).inflate(layouts[option-1],parent,false);
+            return LayoutInflater.from(context).inflate(layouts[1],parent,false);
         }
         if(convertView==null){
             holder=new Holder();

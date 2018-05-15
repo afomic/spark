@@ -17,12 +17,11 @@ import com.afomic.spark.data.Constants;
  * Created by afomic on 22-Oct-16.
  */
 public class CourseListDetailFragment extends Fragment {
-    int level, option;
+    int level;
 
-    public static CourseListDetailFragment getInstance(int option, int level) {
+    public static CourseListDetailFragment getInstance( int level) {
         CourseListDetailFragment fragment = new CourseListDetailFragment();
         Bundle arg = new Bundle();
-        arg.putInt(Constants.OPTION, option);
         arg.putInt(Constants.LEVEL, level);
         fragment.setArguments(arg);
         return fragment;
@@ -34,7 +33,6 @@ public class CourseListDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle arg = getArguments();
-        option = arg.getInt(Constants.OPTION);
         level = arg.getInt(Constants.LEVEL);
     }
 
@@ -44,7 +42,7 @@ public class CourseListDetailFragment extends Fragment {
         View v = inflater.inflate(R.layout.course_list_detail, container, false);
         ExpandableListView courseList = (ExpandableListView) v.findViewById(R.id.course_list);
         // create two adapter for each of the list
-        CourseListAdapter adapter = new CourseListAdapter(getActivity(), level, option);
+        CourseListAdapter adapter = new CourseListAdapter(getActivity(), level);
         //set the adapter to each of the list view
         courseList.setAdapter(adapter);
         return v;

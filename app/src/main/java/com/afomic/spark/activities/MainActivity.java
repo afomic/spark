@@ -150,13 +150,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        if(pos!=0){
-            menu.clear();
-        }
-        return false;
-    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

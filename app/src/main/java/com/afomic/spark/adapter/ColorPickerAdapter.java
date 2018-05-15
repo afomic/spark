@@ -43,7 +43,7 @@ public class ColorPickerAdapter extends BaseAdapter {
         convertView= LayoutInflater.from(context).inflate(R.layout.color_item,parent,false);
         TextView color=(TextView) convertView.findViewById(R.id.background_color);
         if(position==0){
-            color.setText("Set Background Color");
+            color.setText("Set Background");
         }else {
             color.setBackgroundColor(colors[position]);
         }

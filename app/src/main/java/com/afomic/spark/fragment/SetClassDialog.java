@@ -20,6 +20,8 @@ import com.afomic.spark.data.TimeTableData;
 import com.afomic.spark.model.TimeTableClass;
 import com.afomic.spark.services.NotificationService;
 
+import java.util.Locale;
+
 
 /**
  * Created by afomic on 23-Oct-16.
@@ -150,12 +152,12 @@ public class SetClassDialog extends DialogFragment {
         String ans;
         int startTime = time + 7;
         if (startTime < 12) {
-            ans = String.format("%s, %d:00 - %d:00 am", dates[date], startTime, (startTime + 1));
+            ans = String.format(Locale.ENGLISH,"%s, %d:00 - %d:00 am", dates[date], startTime, (startTime + 1));
         } else if (startTime == 12) {
             ans = dates[date] + ", 12:00 - 1:00 pm";
         } else {
             startTime = startTime % 12;
-            ans = String.format("%s, %d:00 - %d:00 pm", dates[date], startTime, (startTime + 1));
+            ans = String.format(Locale.ENGLISH,"%s, %d:00 - %d:00 pm", dates[date], startTime, (startTime + 1));
         }
         return ans;
     }

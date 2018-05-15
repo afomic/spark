@@ -51,12 +51,12 @@ public class CourseData {
         }
     }
 
-    public ArrayList<Course> getCourseList(int level, int semester, int option) {
+    public ArrayList<Course> getCourseList(int level, int semester) {
         Cursor cu;
         try {
             db = helper.getReadableDatabase();
             String[] projection = {CourseContract.COURSE_NAME, CourseContract.COURSE_UNIT, CourseContract.COURSE_PREQ, CourseContract.COURSE_TITLE};
-            String[] whereArgs = {"" + level, "" + semester, "" + option};//get course which semester,level and option equals the required course
+            String[] whereArgs = {"" + level, "" + semester};//get course which semester,level and option equals the required course
             cu = db.query(CourseContract.TABLE_NAME, projection,
                     CourseContract.COURSE_LEVEL + " =? AND " + CourseContract.COURSE_SEMESTER + " =?" ,
                     whereArgs, null, null, null);

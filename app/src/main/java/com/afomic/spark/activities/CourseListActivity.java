@@ -45,7 +45,7 @@ public class CourseListActivity extends AppCompatActivity {
         pager.setAdapter(new FragmentPagerAdapter(fm) {
             @Override
             public Fragment getItem(int position) {
-                return CourseListDetailFragment.getInstance(option,position);
+                return CourseListDetailFragment.getInstance(position);
             }
 
             @Override
