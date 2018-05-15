@@ -3,6 +3,7 @@ package com.afomic.spark.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ProgressBar;
@@ -58,6 +59,8 @@ public class SetupActivity extends AppCompatActivity {
                         }
                         DepartmentAdapter departmentAdapter=new DepartmentAdapter(SetupActivity.this,mAccessTokens);
                         departmentSpinner.setAdapter(departmentAdapter);
+                        departmentSpinner.setSelection(0);
+
                     }
 
                     @Override
@@ -74,13 +77,12 @@ public class SetupActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                AccessToken accessToken=mAccessTokens.get(0);
-                selectedDepartment=accessToken.getAssociationName();
             }
         });
     }
     @OnClick(R.id.btn_submit_department)
     public void selectDepartment(){
+        Log.e("tag", "selectDepartment: "+selectedDepartment );
         mPreferenceManager.setDepartmentName(selectedDepartment);
         startActivity(new Intent(SetupActivity.this,MainActivity.class));
     }

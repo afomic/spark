@@ -31,9 +31,6 @@
             android:name=".activities.GypeeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.ExcoViewerActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.LecturerDetail"
             android:screenOrientation="portrait" />
         <activity
@@ -63,8 +60,9 @@
         <activity
             android:name=".activities.Welcome"
             android:theme="@style/AppTheme.good" />
-        <activity android:name=".BlogDetailActivity"></activity>
-        <activity android:name=".activities.SetupActivity"></activity>
+        <activity android:name=".BlogDetailActivity"/>
+        <activity android:name=".activities.SetupActivity"/>
+        <activity android:name=".activities.ProfileDetailsActivity"/>
     </application>
 
 </manifest>

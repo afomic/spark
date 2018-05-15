@@ -24,5 +24,7 @@
     <dimen name="card_container_margin">16dp</dimen>
     <dimen name="content_margin">4dp</dimen>
     <dimen name="container_padding">8dp</dimen>
+    <dimen name="contain_text_size">16sp</dimen>
+    <dimen name="big_content_text_size">22sp</dimen>
 
 </resources>

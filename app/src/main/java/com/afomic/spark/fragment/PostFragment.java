@@ -73,6 +73,7 @@ public class PostFragment extends Fragment implements PostAdapter.BlogPostListen
         mPostList=new ArrayList<>();
         mPreferenceManager=new PreferenceManager(getActivity());
         requestPermission();
+        setHasOptionsMenu(true);
     }
 
     @Nullable

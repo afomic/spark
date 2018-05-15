@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"/>
+    </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imv_profile_image"
+                android:background="@color/dividerColor"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
+            <LinearLayout
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="4dp"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:padding="8dp"
+                    android:text="Afolabi Michael"
+                    android:id="@+id/tv_name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dividerColor"
+                android:layout_marginLeft="64dp"
+                />
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="4dp"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:padding="8dp"
+                    android:text="afomic1@gmail.com"
+                    android:id="@+id/tv_email"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dividerColor"
+                android:layout_marginLeft="64dp"
+                />
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="4dp"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:padding="8dp"
+                    android:text="08174442314"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:id="@+id/tv_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dividerColor"
+                android:layout_marginLeft="64dp"
+                />
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:id="@+id/lecturer_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:padding="4dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/degree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:padding="8dp"
+                        android:text="Bsc ife,Msc london"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:id="@+id/tv_lecturer_degree"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.6dp"
+                    android:background="@color/dividerColor"
+                    android:layout_marginLeft="64dp"
+                    />
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:padding="4dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:id="@+id/tv_lecturer_specialization_area"
+                        android:layout_width="match_parent"
+                        android:padding="8dp"
+                        android:text="Failing Student"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.6dp"
+                    android:background="@color/dividerColor"
+                    android:layout_marginLeft="64dp"/>
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:padding="4dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/ic_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="402"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:padding="8dp"
+                        android:inputType="numberDecimal"
+                        android:id="@+id/tv_lecturer_room_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.6dp"
+                    android:background="@color/dividerColor"
+                    android:layout_marginLeft="64dp"
+                    />
+
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/exco_view"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:padding="4dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:text="400"
+                        android:padding="8dp"
+                        android:layout_width="match_parent"
+                        android:id="@+id/tv_executive_level"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.6dp"
+                    android:background="@color/dividerColor"
+                    android:layout_marginLeft="64dp"
+                    />
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:padding="4dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/ic_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:padding="8dp"
+                        android:text="President"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:id="@+id/tv_executive_position"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dividerColor"
+                android:layout_marginLeft="64dp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:src="@drawable/ic_phone"
+        android:background="@color/button_text_color"
+        app:backgroundTint="@color/button_text_color"
+        app:layout_anchorGravity="right|bottom"
+        app:layout_anchor="@id/imv_profile_image"
+        app:fabSize="normal"
+        android:id="@+id/fab_call"
+        android:layout_margin="8dp"
+        android:layout_alignBottom="@id/imv_profile_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

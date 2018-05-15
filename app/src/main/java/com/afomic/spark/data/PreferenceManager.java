@@ -104,12 +104,12 @@ public class PreferenceManager {
     public void setFirstTimeLaunch(boolean isFirstTime) {
         SharedPreferences.Editor editor=preferences.edit();
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor.commit();
+        editor.apply();
     }
     public void setDepartmentName(String departmentName) {
         SharedPreferences.Editor editor=preferences.edit();
         editor.putString(PREF_DEPARTMENT_NAME,departmentName);
-        editor.commit();
+        editor.apply();
     }
 
     public boolean isFirstTimeLaunch() {

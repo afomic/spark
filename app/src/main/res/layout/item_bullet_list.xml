@@ -16,6 +16,7 @@
     <TextView
         tools:text="some text"
         android:id="@+id/tv_bullet"
+        android:textSize="@dimen/contain_text_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

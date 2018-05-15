@@ -53,9 +53,6 @@ public class MainActivity extends AppCompatActivity {
         Typeface roboto = Typeface.createFromAsset(getAssets(),"font/Lato-Regular.ttf");
         setContentView(R.layout.activity_main);
         preferenceManager=new PreferenceManager(MainActivity.this);
-        //TODO remove after test
-        preferenceManager.setDepartmentName("ggg");
-        preferenceManager.setUserId("dhdhdhhdhwiwwiwidncncxncncncn");
         drawerLayout=(DrawerLayout) findViewById(R.id.home);
         GypeeCourseData.addData(this);
         fm=getSupportFragmentManager();

@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
         pager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return PersonViewerFragment.getInstance(types[position]);
+                return PersonViewerFragment.getInstance(position);
             }
 
             @Override

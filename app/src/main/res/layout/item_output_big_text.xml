@@ -8,6 +8,7 @@
     <TextView
         android:padding="8dp"
         tools:text="Some texts"
+        android:textSize="@dimen/big_content_text_size"
         android:id="@+id/tv_big_text"
         android:layout_width="match_parent"
         android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"

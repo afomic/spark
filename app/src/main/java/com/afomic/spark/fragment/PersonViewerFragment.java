@@ -1,20 +1,31 @@
 package com.afomic.spark.fragment;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+
 
 import com.afomic.spark.R;
 import com.afomic.spark.adapter.PersonAdapter;
-import com.afomic.spark.data.Constants;
+import com.afomic.spark.data.PreferenceManager;
+import com.afomic.spark.model.Profile;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+
+import java.util.ArrayList;
 
 
 /**
@@ -22,12 +33,20 @@ import com.afomic.spark.data.Constants;
  */
 public class PersonViewerFragment extends Fragment {
     RecyclerView grid;
-    String type;
+    int type;
+    private static final String BUNDLE_TYPE = "type";
+    private ArrayList<Profile> mProfiles;
+    private DatabaseReference profileRef;
+    private PersonAdapter adapter;
+    private PreferenceManager mPreferenceManager;
+    private ProgressBar mProgressBar;
+    private LinearLayout mEmptyView;
 
-    public static PersonViewerFragment getInstance(String type){
-        PersonViewerFragment fragment=new PersonViewerFragment();
-        Bundle arg=new Bundle();
-        arg.putString(Constants.TYPE,type);
+
+    public static PersonViewerFragment getInstance(int type) {
+        PersonViewerFragment fragment = new PersonViewerFragment();
+        Bundle arg = new Bundle();
+        arg.putInt(BUNDLE_TYPE, type);
         fragment.setArguments(arg);
         return fragment;
     }
@@ -35,31 +54,59 @@ public class PersonViewerFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        type=getArguments().getString(Constants.TYPE);
+        type = getArguments().getInt(BUNDLE_TYPE);
+        mPreferenceManager = new PreferenceManager(getActivity());
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.person_viewer,container,false);
-        grid=(RecyclerView) view.findViewById(R.id.person_grid);
-        int screenWidth= getResources().getConfiguration().screenWidthDp;
-        int numberOfRows=screenWidth/140;
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(),numberOfRows);
+        View view = inflater.inflate(R.layout.person_viewer, container, false);
+        grid = view.findViewById(R.id.person_grid);
+        mProgressBar = view.findViewById(R.id.progress_bar);
+        mEmptyView = view.findViewById(R.id.empty_list_view);
+        int screenWidth = getResources().getConfiguration().screenWidthDp;
+        int numberOfRows = screenWidth / 140;
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), numberOfRows);
         grid.setLayoutManager(mLayoutManager);
-
-
 
         grid.setItemAnimator(new DefaultItemAnimator());
 
+        mProfiles = new ArrayList<>();
+        adapter = new PersonAdapter(getActivity(), mProfiles);
 
-//        final PersonAdapter adapter=new PersonAdapter(getContext(),type);
-//        grid.setAdapter(adapter);
+        grid.setAdapter(adapter);
+        Log.e("tag", "onCreateView: " + mPreferenceManager.getDepartmentName());
+
+        profileRef = FirebaseDatabase.getInstance().getReference("profile")
+                .child(mPreferenceManager.getDepartmentName());
+        profileRef.orderByChild("type")
+                .equalTo(type)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        mProfiles.clear();
+                        mProgressBar.setVisibility(View.GONE);
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Profile item = snapshot.getValue(Profile.class);
+                            mProfiles.add(item);
+                        }
+                        if (mProfiles.size() > 0) {
+                            adapter.notifyDataSetChanged();
+                            mEmptyView.setVisibility(View.GONE);
+                        }else {
+                            mEmptyView.setVisibility(View.VISIBLE);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
 
         return view;
     }
-    private int dpToPx(int dp) {
-        Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
-    }
+
 }

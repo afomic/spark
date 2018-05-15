@@ -12,7 +12,9 @@
     <color name="translucent_scrim_top_center">#0c000000</color>
     <color name="translucent_scrim_bottom">#2a000000</color>
     <color name="translucent_scrim_bottom_center">#42212121</color>
-
+    <color name="executiveBackgroundColor">#4682B4</color>
+    <color name="lecturerBackgroundColor">#0E4D92</color>
+    <color name="parliamentBackgroundColor">#2278d4</color>
 
 
     <!-- Screens background color-->
