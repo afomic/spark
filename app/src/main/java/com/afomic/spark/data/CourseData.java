@@ -26,14 +26,14 @@ public class CourseData {
     }
 
     //return an array list of courses
-    public ArrayList<Course> getCourse(int level, int semester, int option) {
+    public ArrayList<Course> getCourse(int level, int semester) {
         Cursor cu;
         try {
             db = helper.getReadableDatabase();
             String[] projection = {CourseContract.COURSE_NAME, CourseContract.COURSE_UNIT};
-            String[] whereArgs = {"" + level, "" + semester, "" + option};//get course which semester,level and option equals the required course
+            String[] whereArgs = {"" + level, "" + semester};//get course which semester,level and option equals the required course
             cu = db.query(CourseContract.TABLE_NAME, projection,
-                    CourseContract.COURSE_LEVEL + " =? AND " + CourseContract.COURSE_SEMESTER + " =?" + " AND( " + CourseContract.COURSE_OPTION + " =? OR " + CourseContract.COURSE_OPTION + " =4)",
+                    CourseContract.COURSE_LEVEL + " =? AND " + CourseContract.COURSE_SEMESTER + " =?",
                     whereArgs, null, null, null);
             ArrayList<Course> entries = new ArrayList<>();
             while (cu.moveToNext()) {
@@ -58,7 +58,7 @@ public class CourseData {
             String[] projection = {CourseContract.COURSE_NAME, CourseContract.COURSE_UNIT, CourseContract.COURSE_PREQ, CourseContract.COURSE_TITLE};
             String[] whereArgs = {"" + level, "" + semester, "" + option};//get course which semester,level and option equals the required course
             cu = db.query(CourseContract.TABLE_NAME, projection,
-                    CourseContract.COURSE_LEVEL + " =? AND " + CourseContract.COURSE_SEMESTER + " =?" + " AND( " + CourseContract.COURSE_OPTION + " =? OR " + CourseContract.COURSE_OPTION + " =4)",
+                    CourseContract.COURSE_LEVEL + " =? AND " + CourseContract.COURSE_SEMESTER + " =?" ,
                     whereArgs, null, null, null);
             ArrayList<Course> entries = new ArrayList<>();
             while (cu.moveToNext()) {
@@ -66,7 +66,7 @@ public class CourseData {
                 String name = cu.getString(cu.getColumnIndexOrThrow(CourseContract.COURSE_NAME));
                 String title = cu.getString(cu.getColumnIndexOrThrow(CourseContract.COURSE_TITLE));
                 String preq = cu.getString(cu.getColumnIndexOrThrow(CourseContract.COURSE_PREQ));
-                Course tempCourse = new Course(name, 0, unit, level, semester, preq, title);
+                Course tempCourse = new Course(name, unit, level, semester, preq, title);
                 entries.add(tempCourse);
 
             }
@@ -107,7 +107,6 @@ public class CourseData {
         ContentValues values = new ContentValues();
         values.put(CourseContract.COURSE_LEVEL, entry.getCourseLevel());
         values.put(CourseContract.COURSE_NAME, entry.getCourseName());
-        values.put(CourseContract.COURSE_OPTION, entry.getOption());
         values.put(CourseContract.COURSE_SEMESTER, entry.getCourseSemester());
         values.put(CourseContract.COURSE_UNIT, entry.getCourseUnit());
         values.put(CourseContract.COURSE_PREQ, entry.getPrerequisite());
@@ -155,7 +154,7 @@ public class CourseData {
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(CourseContract.COURSE_NAME));
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(CourseContract.COURSE_TITLE));
                 String preq = cursor.getString(cursor.getColumnIndexOrThrow(CourseContract.COURSE_PREQ));
-                Course tempCourse = new Course(name, 0, unit, level, semester, preq, title);
+                Course tempCourse = new Course(name, unit, level, semester, preq, title);
                 searchResult.add(tempCourse);
             }
         } catch (Exception e) {

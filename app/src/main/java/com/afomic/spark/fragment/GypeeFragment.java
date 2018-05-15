@@ -31,10 +31,8 @@ import com.afomic.spark.data.PreferenceManager;
  */
 public class GypeeFragment extends Fragment {
     RadioButton hundred, twoHundred, threeHundred, fourHundred, fiveHundred, firstSemester, secondSemester;
-    int level, semester, option;
+    int level, semester;
     PreferenceManager preference;
-    Spinner optionSpinner;
-
     public static GypeeFragment getInstance() {
         return new GypeeFragment();
     }
@@ -45,7 +43,6 @@ public class GypeeFragment extends Fragment {
         if (savedInstanceState != null) {
             level = savedInstanceState.getInt(Constants.LEVEL);
             semester = savedInstanceState.getInt(Constants.SEMESTER);
-            option = savedInstanceState.getInt(Constants.OPTION);
         }
 
         preference = new PreferenceManager(getActivity());
@@ -74,7 +71,6 @@ public class GypeeFragment extends Fragment {
         fiveHundred = (RadioButton) view.findViewById(R.id.rb_level_five_hundred);
         firstSemester = (RadioButton) view.findViewById(R.id.rb_semester_first);
         secondSemester = (RadioButton) view.findViewById(R.id.rb_semester_second);
-        optionSpinner = (Spinner) view.findViewById(R.id.sp_quick);
 
         //setting action listener to each of the widget
         hundred.setOnCheckedChangeListener(new RbListner());
@@ -85,19 +81,6 @@ public class GypeeFragment extends Fragment {
         firstSemester.setOnCheckedChangeListener(new RbListner());
         secondSemester.setOnCheckedChangeListener(new RbListner());
 
-        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getContext(), R.array.option, android.R.layout.simple_selectable_list_item);
-        optionSpinner.setAdapter(spinnerAdapter);
-        optionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                option = position;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         return view;
     }
 
@@ -113,7 +96,6 @@ public class GypeeFragment extends Fragment {
             case R.id.menu_gypee_mark:
                 if (checkFields()) {
                     Intent intent = new Intent(getActivity(), GypeeActivity.class);
-                    intent.putExtra(Constants.OPTION, option);
                     intent.putExtra(Constants.LEVEL, level);
                     intent.putExtra(Constants.SEMESTER, semester);
                     startActivity(intent);
@@ -123,7 +105,7 @@ public class GypeeFragment extends Fragment {
                 break;
             case R.id.menu_gypee_restore:
                 if (preference.isThereASavedData()) {
-                    SetPasswordDialog dialog = SetPasswordDialog.getInstance(0, 0, 0, 0, 0, Constants.LOAD_DATA);
+                    SetPasswordDialog dialog = SetPasswordDialog.getInstance(0, 0, 0, 0, Constants.LOAD_DATA);
                     dialog.show(getFragmentManager(), null);
                 } else {
                     Toast.makeText(getActivity(), "No Saved Data", Toast.LENGTH_SHORT).show();
@@ -134,14 +116,9 @@ public class GypeeFragment extends Fragment {
     }
 
     public boolean checkFields() {
-        if (option == 0) {
+         if (semester == 0) {
             return false;
-        } else if (semester == 0) {
-            return false;
-        } else if (level == 0) {
-            return false;
-        }
-        return true;
+        } else return level != 0;
     }
 
     public class RbListner implements CompoundButton.OnCheckedChangeListener {
@@ -194,6 +171,5 @@ public class GypeeFragment extends Fragment {
         super.onSaveInstanceState(outState);
         outState.putInt(Constants.LEVEL, level);
         outState.putInt(Constants.SEMESTER, semester);
-        outState.putInt(Constants.OPTION, option);
     }
 }

@@ -49,10 +49,9 @@ public class GypeeCalculateFragment extends Fragment {
     private ArrayList<Course> userCourse;
     private ArrayList<Course> selectedCourse;
     private Gypee userGypee;
-    private int semester, level, option;
+    private int semester, level;
     private double totalPoint, totalUnit;
     private int tempTotalUnit;
-    private Bundle bundle;
     private GridAdapter adapter;
     private SuggestionAdapter searchAdapter;
     private NonScrollListView gradingList;
@@ -66,12 +65,11 @@ public class GypeeCalculateFragment extends Fragment {
     private ScrollView scrollContainer;
     private MenuItem menuItem;
 
-    public static GypeeCalculateFragment getInstance(int level, int semester, int option, double totalPoint, double totalUnit) {
+    public static GypeeCalculateFragment getInstance(int level, int semester, double totalPoint, double totalUnit) {
         GypeeCalculateFragment fragment = new GypeeCalculateFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(Constants.LEVEL, level);
         bundle.putInt(Constants.SEMESTER, semester);
-        bundle.putInt(Constants.OPTION, option);
         bundle.putDouble(Constants.TOTAL_POINT, totalPoint);
         bundle.putDouble(Constants.TOTAL_UNIT, totalUnit);
         fragment.setArguments(bundle);
@@ -86,14 +84,13 @@ public class GypeeCalculateFragment extends Fragment {
     }
 
     public interface Callback {
-        public void onDoneClick(int semester, int level, int option, double totalPoint, double totalUnit, double previousPoint, double previousUnit, String cgpa, String gpa);
+        public void onDoneClick(int semester, int level, double totalPoint, double totalUnit, double previousPoint, double previousUnit, String cgpa, String gpa);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle arg = getArguments();
-        option = arg.getInt(Constants.OPTION, 0);
         level = arg.getInt(Constants.LEVEL, 1);
         semester = arg.getInt(Constants.SEMESTER, 1);
         totalPoint = arg.getDouble(Constants.TOTAL_POINT, 0);
@@ -145,7 +142,6 @@ public class GypeeCalculateFragment extends Fragment {
                 courseSearch.onActionViewCollapsed();
                 menuItem.collapseActionView();
                 Intent intent = new Intent(getActivity(), AddCourseActivity.class);
-                intent.putExtra(Constants.OPTION, option);
                 startActivity(intent);
             }
         });
@@ -158,7 +154,7 @@ public class GypeeCalculateFragment extends Fragment {
 
 
     public void process() {
-        userCourse = courseData.getCourse(level, semester, option);
+        userCourse = courseData.getCourse(level, semester);
         selectedCourse = new ArrayList<>();
         addCheckBox(userCourse, layout);
 
@@ -184,7 +180,7 @@ public class GypeeCalculateFragment extends Fragment {
         ArrayList<Course> carriedCourse = new ArrayList<>();
         for (Course course : array) {
             if (course.getGrade() == -1) {
-                Course carry = new Course(course.getCourseName(), option, course.getCourseUnit(), level + 1, semester, course.getPrerequisite(), course.getTitle());
+                Course carry = new Course(course.getCourseName(), course.getCourseUnit(), level + 1, semester, course.getPrerequisite(), course.getTitle());
                 carriedCourse.add(carry);
             } else {
                 myTotalPoint = myTotalPoint + (course.getGrade() * course.getCourseUnit());
@@ -268,7 +264,7 @@ public class GypeeCalculateFragment extends Fragment {
                     totalPoint = userGypee.getCtotalPoint();
                     String gpa = String.format("%.2f", userGypee.getGpa());
                     String cgpa = String.format("%.2f", userGypee.getCgpa());
-                    mCallback.onDoneClick(semester, level, option, totalPoint, totalUnit, previousPoint, previousUnit, cgpa, gpa);
+                    mCallback.onDoneClick(semester, level, totalPoint, totalUnit, previousPoint, previousUnit, cgpa, gpa);
                 } else {
                     Toast.makeText(getContext(), "You must select at least one Courses", Toast.LENGTH_SHORT).show();
                 }

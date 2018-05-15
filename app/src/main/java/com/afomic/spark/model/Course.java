@@ -5,15 +5,14 @@ package com.afomic.spark.model;
  */
 public class Course {
     private String courseName;
-    private int courseSemester, courseLevel, courseUnit, option;
+    private int courseSemester, courseLevel, courseUnit;
     private int resourceID;
     private int grade;
     private String prerequisite, title;
 
-    public Course(String courseName, int option, int courseUnit, int courseLevel, int courseSemester, String prerequisite, String title) {
+    public Course(String courseName, int courseUnit, int courseLevel, int courseSemester, String prerequisite, String title) {
         this.courseName = courseName;
         this.courseSemester = courseSemester;
-        this.option = option;
         this.prerequisite = prerequisite;
         this.title = title;
         this.courseLevel = courseLevel;
@@ -30,13 +29,6 @@ public class Course {
 
     }
 
-    public int getOption() {
-        return option;
-    }
-
-    public void setOption(int option) {
-        this.option = option;
-    }
 
     public int getCourseLevel() {
         return courseLevel;

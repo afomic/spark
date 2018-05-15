@@ -37,15 +37,15 @@ public class GypeeActivity extends AppCompatActivity implements GypeeCalculateFr
         fm=getSupportFragmentManager();
         fragment=fm.findFragmentById(R.id.gypee_container);
         if(fragment==null){
-            GypeeCalculateFragment fragment1=GypeeCalculateFragment.getInstance(level,semester,option,totalPoint,totalUnit);
+            GypeeCalculateFragment fragment1=GypeeCalculateFragment.getInstance(level,semester,totalPoint,totalUnit);
             fm.beginTransaction().add(R.id.gypee_container,fragment1).commit();
         }
 
     }
 
     @Override
-    public void onDoneClick(int semester, int level, int option, double totalPoint, double totalUnit, double previousPoint, double previousUnit, String cgpa, String gpa) {
-        GypeeResultFragment fragment1=GypeeResultFragment.getInstance(level,semester,previousPoint,previousUnit,totalPoint,totalUnit,option,gpa,cgpa);
+    public void onDoneClick(int semester, int level, double totalPoint, double totalUnit, double previousPoint, double previousUnit, String cgpa, String gpa) {
+        GypeeResultFragment fragment1=GypeeResultFragment.getInstance(level,semester,previousPoint,previousUnit,totalPoint,totalUnit,gpa,cgpa);
         this.totalUnit=(int) totalUnit;
         this.totalPoint=(int) totalPoint;
         this.semester=semester;

@@ -79,7 +79,7 @@ public class AddCourseActivity extends AppCompatActivity {
                     unit= Integer.parseInt(getValue(edtCourseUnit));
                     courseCode=getValue(edtCourseCode);
                     courseTitle=getValue(edtCourseTitle).toUpperCase();
-                    Course item=new Course(courseCode,option,unit,level,semester,"",courseTitle);
+                    Course item=new Course(courseCode,unit,level,semester,"",courseTitle);
                     ArrayList<Course> courses=new ArrayList<>();
                     courses.add(item);
                     dbData.addCourse(courses);

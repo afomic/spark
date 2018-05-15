@@ -22,14 +22,14 @@ import com.afomic.spark.data.PreferenceManager;
  */
 
 public class GypeeResultFragment extends Fragment {
-    int option, semester, level;
+    int semester, level;
     String gpa, cgpa;
     TextView mySemester, myLevel, myGpa, myCgpa;
     PreferenceManager preference;
     double totalPoint, totalUnit, previousTotalPoint, previousTotalUnit;
 
     public static GypeeResultFragment getInstance(int level, int semester, double previousTotalPoint
-            , double previousTotalUnit, double totalPoint, double totalUnit, int option, String gpa, String cgpa) {
+            , double previousTotalUnit, double totalPoint, double totalUnit, String gpa, String cgpa) {
         GypeeResultFragment fragment = new GypeeResultFragment();
         Bundle bundle = new Bundle();
         bundle.putDouble(Constants.TOTAL_UNIT, totalUnit);
@@ -38,7 +38,6 @@ public class GypeeResultFragment extends Fragment {
         bundle.putDouble(Constants.PREVIOUS_TOTAL_UNIT, previousTotalUnit);
         bundle.putInt(Constants.SEMESTER, semester);
         bundle.putInt(Constants.LEVEL, level);
-        bundle.putInt(Constants.OPTION, option);
         bundle.putString(Constants.GPA, gpa);
         bundle.putString(Constants.CGPA, cgpa);
         fragment.setArguments(bundle);
@@ -55,7 +54,6 @@ public class GypeeResultFragment extends Fragment {
         Log.d(Constants.TAG, "" + totalPoint + " " + totalUnit);
         previousTotalPoint = arg.getDouble(Constants.PREVIOUS_TOTAL_POINT);
         previousTotalUnit = arg.getDouble(Constants.PREVIOUS_TOTAL_UNIT);
-        option = arg.getInt(Constants.OPTION);
         level = arg.getInt(Constants.LEVEL);
         semester = arg.getInt(Constants.SEMESTER);
         gpa = arg.getString(Constants.GPA);
@@ -90,20 +88,20 @@ public class GypeeResultFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_next) {
             next(level, semester);
-            GypeeCalculateFragment fragment = GypeeCalculateFragment.getInstance(level, semester, option, totalPoint, totalUnit);
+            GypeeCalculateFragment fragment = GypeeCalculateFragment.getInstance(level, semester, totalPoint, totalUnit);
             getFragmentManager().beginTransaction().replace(R.id.gypee_container, fragment).commit();
 
         } else if (item.getItemId() == android.R.id.home) {
-            GypeeCalculateFragment fragment = GypeeCalculateFragment.getInstance(level, semester, option, previousTotalPoint, previousTotalUnit);
+            GypeeCalculateFragment fragment = GypeeCalculateFragment.getInstance(level, semester, previousTotalPoint, previousTotalUnit);
             getFragmentManager().beginTransaction().replace(R.id.gypee_container, fragment).commit();
         } else if (item.getItemId() == R.id.menu_save) {
             next(level, semester);
             if (PreferenceManager.isLoggedIn()) {
-                SetPasswordDialog dialog = SetPasswordDialog.getInstance(semester, level, option, totalPoint, totalUnit, Constants.UPDATE_DATA);
+                SetPasswordDialog dialog = SetPasswordDialog.getInstance(semester, level, totalPoint, totalUnit, Constants.UPDATE_DATA);
                 dialog.show(getFragmentManager(), null);
 
             } else if (!preference.isThereASavedData()) {
-                SetPasswordDialog dialog = SetPasswordDialog.getInstance(semester, level, option, totalPoint, totalUnit, Constants.SAVE_DATA);
+                SetPasswordDialog dialog = SetPasswordDialog.getInstance(semester, level, totalPoint, totalUnit, Constants.SAVE_DATA);
                 dialog.show(getFragmentManager(), null);
             }
         }

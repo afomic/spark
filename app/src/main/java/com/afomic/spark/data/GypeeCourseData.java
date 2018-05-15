@@ -16,8 +16,9 @@ import java.util.ArrayList;
 public class GypeeCourseData {
     static ArrayList<Course> courses = new ArrayList<>();
 
-    public static void addCourse() {
-        FirebaseDatabase.getInstance().getReference("course/nacoss")
+    public static void addCourse(String departmentName) {
+        FirebaseDatabase.getInstance().getReference("course")
+                .child(departmentName)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -36,9 +37,10 @@ public class GypeeCourseData {
     }
 
     public static void addData(Context context) {
+        PreferenceManager preferenceManager=new PreferenceManager(context);
         CourseData db = new CourseData(context);
         if (db.isEmpty()) {
-            addCourse();
+            addCourse(preferenceManager.getDepartmentName());
             db.addCourse(courses);
         }
 
