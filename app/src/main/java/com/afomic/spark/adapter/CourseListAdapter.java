@@ -24,7 +24,6 @@ public class CourseListAdapter extends BaseExpandableListAdapter {
     private int level;
      private  ArrayList<Course> firstSemester,secondSemester;
      private CourseData dbData;
-    int[] layouts={R.layout.restricted_econs, R.layout.restricted_eng,R.layout.restricted_math};
     private String[] semesters={"Harmattan Semester","Rain semester"};
     private String[] electives={"Special Electives","Restricted Electives"};
     public CourseListAdapter(Context c,int level){
@@ -40,6 +39,9 @@ public class CourseListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
+        if(level==0){
+            return 1;
+        }
         return 2;
     }
 
@@ -114,8 +116,6 @@ public class CourseListAdapter extends BaseExpandableListAdapter {
         Holder holder;
         if(level==0&&groupPosition==0){
             return LayoutInflater.from(context).inflate(R.layout.special_electives,parent,false);
-        }else if(level==0&&groupPosition==1){
-            return LayoutInflater.from(context).inflate(layouts[1],parent,false);
         }
         if(convertView==null){
             holder=new Holder();
