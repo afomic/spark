@@ -15,6 +15,7 @@ public class PreferenceManager {
     private static final String PREF_DEPARTMENT_NAME = "department";
     private static final String PREF_USER_ID = "id";
     private String emptyString = "djkljcamcxk";
+    private static final String PREF_ASSOCIATION_NAME="association_name";
 
     public PreferenceManager(Context context) {
         preferences = context.getSharedPreferences(Constants.PREF_NAME, 0);
@@ -62,6 +63,15 @@ public class PreferenceManager {
         editor.putInt(Constants.SEMESTER, semester);
         editor.apply();
     }
+    public String getAssociationName() {
+        return preferences.getString(PREF_ASSOCIATION_NAME, null);
+    }
+
+    public void setAssociationName(String associationName) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_ASSOCIATION_NAME, associationName);
+        editor.apply();
+    }
 
     public int getTotalUnit() {
         return preferences.getInt(Constants.TOTAL_UNIT, 1);
@@ -94,13 +104,13 @@ public class PreferenceManager {
         editor.apply();
     }
 
-    public int getOption() {
-        return preferences.getInt(Constants.OPTION, 1);
+    public String getOption() {
+        return preferences.getString(Constants.OPTION, null);
     }
 
-    public void setOption(int option) {
+    public void setOption(String option) {
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(Constants.OPTION, option);
+        editor.putString(Constants.OPTION, option);
         editor.apply();
     }
 

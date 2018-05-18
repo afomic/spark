@@ -33,7 +33,7 @@ public class SetupActivity extends AppCompatActivity {
     ProgressBar mProgressBar;
 
 
-    private String selectedDepartment;
+    private AccessToken selectedDepartmentToken;
     private PreferenceManager mPreferenceManager;
     private List<AccessToken> mAccessTokens;
 
@@ -71,8 +71,8 @@ public class SetupActivity extends AppCompatActivity {
         departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                AccessToken accessToken=mAccessTokens.get(position);
-                selectedDepartment=accessToken.getAssociationName();
+                selectedDepartmentToken=mAccessTokens.get(position);
+
             }
 
             @Override
@@ -82,8 +82,11 @@ public class SetupActivity extends AppCompatActivity {
     }
     @OnClick(R.id.btn_submit_department)
     public void selectDepartment(){
-        Log.e("tag", "selectDepartment: "+selectedDepartment );
-        mPreferenceManager.setDepartmentName(selectedDepartment);
+        if(selectedDepartmentToken.getOption()!=null){
+            mPreferenceManager.setOption(selectedDepartmentToken.getOption());
+        }
+        mPreferenceManager.setAssociationName(selectedDepartmentToken.getAssociationName());
+        mPreferenceManager.setDepartmentName(selectedDepartmentToken.getDepartmentName());
         startActivity(new Intent(SetupActivity.this,MainActivity.class));
     }
 }

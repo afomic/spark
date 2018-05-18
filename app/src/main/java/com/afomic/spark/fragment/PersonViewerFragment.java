@@ -75,7 +75,7 @@ public class PersonViewerFragment extends Fragment {
 
         grid.setAdapter(adapter);
         profileRef = FirebaseDatabase.getInstance().getReference("profile")
-                .child(mPreferenceManager.getDepartmentName());
+                .child(mPreferenceManager.getAssociationName());
         profileRef.orderByChild("type")
                 .equalTo(type)
                 .addValueEventListener(new ValueEventListener() {

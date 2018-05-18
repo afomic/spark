@@ -16,7 +16,7 @@ import com.afomic.spark.util.ZoomOutTransformer;
 
 
 /**
- * Created by afomic on 19-Oct-16.
+ * Created by afolabi michael on 19-Oct-16.
  * this is the
  */
 public class ConstitutionViewerActivity extends AppCompatActivity implements ConstitutionDetailFragment.constitutionCallback{
@@ -31,7 +31,7 @@ public class ConstitutionViewerActivity extends AppCompatActivity implements Con
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_constitution_detail);
         FragmentManager fm=getSupportFragmentManager();
-        toolbar=(Toolbar)findViewById(R.id.pager_toolbar);
+        toolbar=findViewById(R.id.pager_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pager=(ViewPager)findViewById(R.id.single_pager);

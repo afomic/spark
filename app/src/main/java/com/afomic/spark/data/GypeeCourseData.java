@@ -40,7 +40,8 @@ public class GypeeCourseData {
         PreferenceManager preferenceManager=new PreferenceManager(context);
         CourseData db = new CourseData(context);
         if (db.isEmpty()) {
-            addCourse(preferenceManager.getDepartmentName());
+            String courseChildNode=preferenceManager.getOption()==null?preferenceManager.getAssociationName():preferenceManager.getOption();
+            addCourse(courseChildNode);
             db.addCourse(courses);
         }
 
